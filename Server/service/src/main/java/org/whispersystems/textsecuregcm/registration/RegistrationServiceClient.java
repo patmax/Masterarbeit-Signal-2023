@@ -12,6 +12,7 @@ import io.grpc.ChannelCredentials;
 import io.grpc.Deadline;
 import io.grpc.Grpc;
 import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.TlsChannelCredentials;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -62,6 +63,7 @@ public class RegistrationServiceClient implements Managed {
       final String caCertificatePem,
       final Executor callbackExecutor) throws IOException {
 
+    /*
     try (final ByteArrayInputStream certificateInputStream = new ByteArrayInputStream(caCertificatePem.getBytes(StandardCharsets.UTF_8))) {
       final ChannelCredentials tlsChannelCredentials = TlsChannelCredentials.newBuilder()
           .trustManager(certificateInputStream)
@@ -69,6 +71,9 @@ public class RegistrationServiceClient implements Managed {
 
       this.channel = Grpc.newChannelBuilderForAddress(host, port, tlsChannelCredentials).build();
     }
+    */
+
+    this.channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 
     this.stub = RegistrationServiceGrpc.newFutureStub(channel)
         .withCallCredentials(new ApiKeyCallCredentials(apiKey));

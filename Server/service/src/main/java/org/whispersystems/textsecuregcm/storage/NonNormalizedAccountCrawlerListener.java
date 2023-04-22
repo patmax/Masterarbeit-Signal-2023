@@ -80,7 +80,7 @@ public class NonNormalizedAccountCrawlerListener extends AccountDatabaseCrawlerL
       conflictingNumbers = workingConflictingNumbers;
     }
 
-    metricsCluster.useCluster(connection -> {
+    metricsCluster.useCluster(connection -> { // TODO: This Incrementation does not work apparently ...
       connection.sync().incrby(NORMALIZED_NUMBER_COUNT_KEY, normalizedNumbers);
       connection.sync().incrby(NON_NORMALIZED_NUMBER_COUNT_KEY, nonNormalizedNumbers);
       connection.sync().incrby(CONFLICTING_NUMBER_COUNT_KEY, conflictingNumbers);
@@ -89,17 +89,22 @@ public class NonNormalizedAccountCrawlerListener extends AccountDatabaseCrawlerL
 
   @Override
   public void onCrawlEnd(final Optional<UUID> fromUuid) {
-    final int normalizedNumbers = metricsCluster.withCluster(connection ->
-        Integer.parseInt(connection.sync().get(NORMALIZED_NUMBER_COUNT_KEY)));
+    try {
+      final int normalizedNumbers = metricsCluster.withCluster(connection ->
+          Integer.parseInt(connection.sync().get(NORMALIZED_NUMBER_COUNT_KEY)));
 
-    final int nonNormalizedNumbers = metricsCluster.withCluster(connection ->
-        Integer.parseInt(connection.sync().get(NON_NORMALIZED_NUMBER_COUNT_KEY)));
+      final int nonNormalizedNumbers = metricsCluster.withCluster(connection ->
+          Integer.parseInt(connection.sync().get(NON_NORMALIZED_NUMBER_COUNT_KEY)));
 
-    final int conflictingNumbers = metricsCluster.withCluster(connection ->
-        Integer.parseInt(connection.sync().get(CONFLICTING_NUMBER_COUNT_KEY)));
+      final int conflictingNumbers = metricsCluster.withCluster(connection ->
+          Integer.parseInt(connection.sync().get(CONFLICTING_NUMBER_COUNT_KEY)));
 
-    log.info("Crawl completed. Normalized numbers: {}; non-normalized numbers: {}; conflicting numbers: {}",
-        normalizedNumbers, nonNormalizedNumbers, conflictingNumbers);
+      log.info("Crawl completed. Normalized numbers: {}; non-normalized numbers: {}; conflicting numbers: {}",
+          normalizedNumbers, nonNormalizedNumbers, conflictingNumbers);
+    } catch (Exception e)
+    {
+       log.info("An error occurred while trying to get the (Non-)Normalized / Conflicting Numbers");
+    }
   }
 
   @VisibleForTesting

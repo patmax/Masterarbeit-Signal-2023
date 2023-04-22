@@ -14,7 +14,6 @@ import com.codahale.metrics.SharedMetricRegistries;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -30,12 +29,8 @@ import io.dropwizard.setup.Environment;
 import io.lettuce.core.metrics.MicrometerCommandLatencyRecorder;
 import io.lettuce.core.metrics.MicrometerOptions;
 import io.lettuce.core.resource.ClientResources;
-import io.micrometer.core.instrument.Meter.Id;
 import io.micrometer.core.instrument.Metrics;
-import io.micrometer.core.instrument.Tags;
-import io.micrometer.core.instrument.config.MeterFilter;
 import io.micrometer.core.instrument.distribution.DistributionStatisticConfig;
-import io.micrometer.datadog.DatadogMeterRegistry;
 import java.io.ByteArrayInputStream;
 import java.net.http.HttpClient;
 import java.nio.charset.StandardCharsets;
@@ -60,12 +55,11 @@ import javax.servlet.ServletRegistration;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.glassfish.jersey.server.ServerProperties;
 import org.signal.event.AdminEventLogger;
-import org.signal.event.GoogleCloudAdminEventLogger;
+import org.signal.event.NoOpAdminEventLogger;
 import org.signal.i18n.HeaderControlledResourceBundleLookup;
 import org.signal.libsignal.zkgroup.ServerSecretParams;
 import org.signal.libsignal.zkgroup.auth.ServerZkAuthOperations;
 import org.signal.libsignal.zkgroup.profiles.ServerZkProfileOperations;
-import org.signal.libsignal.zkgroup.receipts.ReceiptCredentialPresentation;
 import org.signal.libsignal.zkgroup.receipts.ServerZkReceiptOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,7 +91,6 @@ import org.whispersystems.textsecuregcm.controllers.ChallengeController;
 import org.whispersystems.textsecuregcm.controllers.DeviceController;
 import org.whispersystems.textsecuregcm.controllers.DirectoryController;
 import org.whispersystems.textsecuregcm.controllers.DirectoryV2Controller;
-import org.whispersystems.textsecuregcm.controllers.DonationController;
 import org.whispersystems.textsecuregcm.controllers.KeepAliveController;
 import org.whispersystems.textsecuregcm.controllers.KeysController;
 import org.whispersystems.textsecuregcm.controllers.MessageController;
@@ -110,10 +103,6 @@ import org.whispersystems.textsecuregcm.controllers.SecureBackupController;
 import org.whispersystems.textsecuregcm.controllers.SecureStorageController;
 import org.whispersystems.textsecuregcm.controllers.SecureValueRecovery2Controller;
 import org.whispersystems.textsecuregcm.controllers.StickerController;
-import org.whispersystems.textsecuregcm.controllers.SubscriptionController;
-import org.whispersystems.textsecuregcm.currency.CoinMarketCapClient;
-import org.whispersystems.textsecuregcm.currency.CurrencyConversionManager;
-import org.whispersystems.textsecuregcm.currency.FixerClient;
 import org.whispersystems.textsecuregcm.experiment.ExperimentEnrollmentManager;
 import org.whispersystems.textsecuregcm.filters.RemoteDeprecationFilter;
 import org.whispersystems.textsecuregcm.filters.RequestStatisticsFilter;
@@ -208,10 +197,7 @@ import org.whispersystems.textsecuregcm.storage.RemoteConfigsManager;
 import org.whispersystems.textsecuregcm.storage.ReportMessageDynamoDb;
 import org.whispersystems.textsecuregcm.storage.ReportMessageManager;
 import org.whispersystems.textsecuregcm.storage.StoredVerificationCodeManager;
-import org.whispersystems.textsecuregcm.storage.SubscriptionManager;
 import org.whispersystems.textsecuregcm.storage.VerificationCodeStore;
-import org.whispersystems.textsecuregcm.subscriptions.BraintreeManager;
-import org.whispersystems.textsecuregcm.subscriptions.StripeManager;
 import org.whispersystems.textsecuregcm.util.Constants;
 import org.whispersystems.textsecuregcm.util.DynamoDbFromConfig;
 import org.whispersystems.textsecuregcm.util.HostnameUtil;
@@ -276,28 +262,6 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
         .build();
 
     {
-      final DatadogMeterRegistry datadogMeterRegistry = new DatadogMeterRegistry(
-          config.getDatadogConfiguration(), io.micrometer.core.instrument.Clock.SYSTEM);
-
-      datadogMeterRegistry.config().commonTags(
-              Tags.of(
-                  "service", "chat",
-                  "host", HostnameUtil.getLocalHostname(),
-                  "version", WhisperServerVersion.getServerVersion(),
-                  "env", config.getDatadogConfiguration().getEnvironment()))
-          .meterFilter(MeterFilter.denyNameStartsWith(MetricsRequestEventListener.REQUEST_COUNTER_NAME))
-          .meterFilter(MeterFilter.denyNameStartsWith(MetricsRequestEventListener.ANDROID_REQUEST_COUNTER_NAME))
-          .meterFilter(MeterFilter.denyNameStartsWith(MetricsRequestEventListener.DESKTOP_REQUEST_COUNTER_NAME))
-          .meterFilter(MeterFilter.denyNameStartsWith(MetricsRequestEventListener.IOS_REQUEST_COUNTER_NAME))
-          .meterFilter(new LettuceMetricsMeterFilter())
-          .meterFilter(new MeterFilter() {
-            @Override
-            public DistributionStatisticConfig configure(final Id id, final DistributionStatisticConfig config) {
-              return defaultDistributionStatisticConfig.merge(config);
-            }
-          });
-
-      Metrics.addRegistry(datadogMeterRegistry);
     }
 
     environment.lifecycle().manage(new MicrometerRegistryManager(Metrics.globalRegistry));
@@ -443,21 +407,7 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
         .minThreads(2)
         .build();
 
-    final AdminEventLogger adminEventLogger = new GoogleCloudAdminEventLogger(
-        LoggingOptions.newBuilder().setProjectId(config.getAdminEventLoggingConfiguration().projectId())
-            .setCredentials(GoogleCredentials.fromStream(new ByteArrayInputStream(
-                config.getAdminEventLoggingConfiguration().credentials().getBytes(StandardCharsets.UTF_8))))
-            .build().getService(),
-        config.getAdminEventLoggingConfiguration().projectId(),
-        config.getAdminEventLoggingConfiguration().logName());
-
-    StripeManager stripeManager = new StripeManager(config.getStripe().apiKey(), subscriptionProcessorExecutor,
-        config.getStripe().idempotencyKeyGenerator(), config.getStripe().boostDescription(), config.getStripe()
-        .supportedCurrencies());
-    BraintreeManager braintreeManager = new BraintreeManager(config.getBraintree().merchantId(),
-        config.getBraintree().publicKey(), config.getBraintree().privateKey(), config.getBraintree().environment(),
-        config.getBraintree().supportedCurrencies(), config.getBraintree().merchantAccounts(),
-        config.getBraintree().graphqlUrl(), config.getBraintree().circuitBreaker(), subscriptionProcessorExecutor);
+    final AdminEventLogger adminEventLogger = new NoOpAdminEventLogger();
 
     ExternalServiceCredentialsGenerator directoryCredentialsGenerator = DirectoryController.credentialsGenerator(
         config.getDirectoryConfiguration().getDirectoryClientConfiguration());
@@ -521,8 +471,6 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
         config.getDynamoDbTables().getRedeemedReceipts().getTableName(),
         dynamoDbAsyncClient,
         config.getDynamoDbTables().getRedeemedReceipts().getExpiration());
-    SubscriptionManager subscriptionManager = new SubscriptionManager(
-        config.getDynamoDbTables().getSubscriptions().getTableName(), dynamoDbAsyncClient);
 
     final RegistrationLockVerificationManager registrationLockVerificationManager = new RegistrationLockVerificationManager(
         accountsManager, clientPresenceManager, backupCredentialsGenerator, rateLimiters);
@@ -543,10 +491,7 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
     final ReceiptSender receiptSender = new ReceiptSender(accountsManager, messageSender, receiptSenderExecutor);
     final TurnTokenGenerator turnTokenGenerator = new TurnTokenGenerator(dynamicConfigurationManager);
 
-    RecaptchaClient recaptchaClient = new RecaptchaClient(
-        config.getRecaptchaConfiguration().getProjectPath(),
-        config.getRecaptchaConfiguration().getCredentialConfigurationJson(),
-        dynamicConfigurationManager);
+    RecaptchaClient recaptchaClient = new RecaptchaClient(config.getRecaptchaConfiguration().getProjectPath());
     HttpClient hcaptchaHttpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).connectTimeout(Duration.ofSeconds(10)).build();
     HCaptchaClient hCaptchaClient = new HCaptchaClient(config.getHCaptchaConfiguration().apiKey(), hcaptchaHttpClient, dynamicConfigurationManager);
     CaptchaChecker captchaChecker = new CaptchaChecker(List.of(recaptchaClient, hCaptchaClient));
@@ -612,14 +557,14 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
 
     DeletedAccountsTableCrawler deletedAccountsTableCrawler = new DeletedAccountsTableCrawler(deletedAccountsManager, deletedAccountsDirectoryReconcilers, cacheCluster, recurringJobExecutor);
 
-    HttpClient currencyClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).connectTimeout(Duration.ofSeconds(10)).build();
+    /*HttpClient currencyClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).connectTimeout(Duration.ofSeconds(10)).build();
     FixerClient fixerClient = new FixerClient(currencyClient, config.getPaymentsServiceConfiguration().getFixerApiKey());
     CoinMarketCapClient coinMarketCapClient = new CoinMarketCapClient(currencyClient, config.getPaymentsServiceConfiguration().getCoinMarketCapApiKey(), config.getPaymentsServiceConfiguration().getCoinMarketCapCurrencyIds());
     CurrencyConversionManager currencyManager = new CurrencyConversionManager(fixerClient, coinMarketCapClient,
-        cacheCluster, config.getPaymentsServiceConfiguration().getPaymentCurrencies(), Clock.systemUTC());
+        cacheCluster, config.getPaymentsServiceConfiguration().getPaymentCurrencies(), Clock.systemUTC());*/
 
     environment.lifecycle().manage(apnSender);
-    environment.lifecycle().manage(apnPushNotificationScheduler);
+    // environment.lifecycle().manage(apnPushNotificationScheduler);
     environment.lifecycle().manage(pubSubManager);
     environment.lifecycle().manage(accountDatabaseCrawler);
     environment.lifecycle().manage(directoryReconciliationAccountDatabaseCrawler);
@@ -628,7 +573,7 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
     environment.lifecycle().manage(messagesCache);
     environment.lifecycle().manage(messagePersister);
     environment.lifecycle().manage(clientPresenceManager);
-    environment.lifecycle().manage(currencyManager);
+    //environment.lifecycle().manage(currencyManager);
     environment.lifecycle().manage(directoryQueue);
     environment.lifecycle().manage(registrationServiceClient);
 
@@ -750,11 +695,9 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
         new DeviceController(pendingDevicesManager, accountsManager, messagesManager, keys, rateLimiters, config.getMaxDevices()),
         new DirectoryController(directoryCredentialsGenerator),
         new DirectoryV2Controller(directoryV2CredentialsGenerator),
-        new DonationController(clock, zkReceiptOperations, redeemedReceiptsManager, accountsManager, config.getBadges(),
-            ReceiptCredentialPresentation::new),
         new MessageController(rateLimiters, messageSender, receiptSender, accountsManager, deletedAccountsManager, messagesManager, pushNotificationManager, reportMessageManager, multiRecipientMessageExecutor,
             reportSpamTokenProvider),
-        new PaymentsController(currencyManager, paymentsCredentialsGenerator),
+        //new PaymentsController(currencyManager, paymentsCredentialsGenerator),
         new ProfileController(clock, rateLimiters, accountsManager, profilesManager, dynamicConfigurationManager,
             profileBadgeConverter, config.getBadges(), cdnS3Client, profileCdnPolicyGenerator, profileCdnPolicySigner,
             config.getCdnConfiguration().getBucket(), zkProfileOperations, batchIdentityCheckExecutor),
@@ -771,11 +714,6 @@ public class WhisperServerService extends Application<WhisperServerConfiguration
             config.getCdnConfiguration().getAccessSecret(), config.getCdnConfiguration().getRegion(),
             config.getCdnConfiguration().getBucket())
     );
-    if (config.getSubscription() != null && config.getOneTimeDonations() != null) {
-      commonControllers.add(new SubscriptionController(clock, config.getSubscription(), config.getOneTimeDonations(),
-          subscriptionManager, stripeManager, braintreeManager, zkReceiptOperations, issuedReceiptsManager, profileBadgeConverter,
-          resourceBundleLevelTranslator));
-    }
 
     for (Object controller : commonControllers) {
       environment.jersey().register(controller);

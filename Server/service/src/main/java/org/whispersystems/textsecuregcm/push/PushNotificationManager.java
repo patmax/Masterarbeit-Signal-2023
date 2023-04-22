@@ -79,7 +79,7 @@ public class PushNotificationManager {
 
   public void handleMessagesRetrieved(final Account account, final Device device, final String userAgent) {
     RedisOperation.unchecked(() -> pushLatencyManager.recordQueueRead(account.getUuid(), device.getId(), userAgent));
-    RedisOperation.unchecked(() -> apnPushNotificationScheduler.cancelScheduledNotifications(account, device));
+    // RedisOperation.unchecked(() -> apnPushNotificationScheduler.cancelScheduledNotifications(account, device));
   }
 
   @VisibleForTesting
@@ -104,8 +104,7 @@ public class PushNotificationManager {
     if (pushNotification.tokenType() == PushNotification.TokenType.APN && !pushNotification.urgent()) {
       // APNs imposes a per-device limit on background push notifications; schedule a notification for some time in the
       // future (possibly even now!) rather than sending a notification directly
-      apnPushNotificationScheduler.scheduleBackgroundNotification(pushNotification.destination(),
-          pushNotification.destinationDevice());
+      // apnPushNotificationScheduler.scheduleBackgroundNotification(pushNotification.destination(), pushNotification.destinationDevice());
     } else {
       final PushNotificationSender sender = switch (pushNotification.tokenType()) {
         case FCM -> fcmSender;
@@ -137,9 +136,11 @@ public class PushNotificationManager {
               pushNotification.destination() != null &&
               pushNotification.destinationDevice() != null) {
 
+            /*
             RedisOperation.unchecked(
                 () -> apnPushNotificationScheduler.scheduleRecurringVoipNotification(pushNotification.destination(),
                     pushNotification.destinationDevice()));
+             */
           }
         } else {
           logger.debug("Failed to deliver {} push notification to {} ({})",
@@ -159,7 +160,7 @@ public class PushNotificationManager {
             d.setUninstalledFeedbackTimestamp(Util.todayInMillis()));
       }
     } else {
-      RedisOperation.unchecked(() -> apnPushNotificationScheduler.cancelScheduledNotifications(account, device));
+      // RedisOperation.unchecked(() -> apnPushNotificationScheduler.cancelScheduledNotifications(account, device));
     }
   }
 }
