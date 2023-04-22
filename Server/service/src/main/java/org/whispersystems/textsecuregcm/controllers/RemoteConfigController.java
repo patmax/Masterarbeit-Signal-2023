@@ -94,16 +94,6 @@ public class RemoteConfigController {
     if (config.getName().startsWith(GLOBAL_CONFIG_PREFIX)) {
       throw new WebApplicationException(Response.Status.FORBIDDEN);
     }
-
-    adminEventLogger.logEvent(
-        new RemoteConfigSetEvent(
-            configToken,
-            config.getName(),
-            config.getPercentage(),
-            config.getDefaultValue(),
-            config.getValue(),
-            config.getHashKey(),
-            config.getUuids().stream().map(UUID::toString).collect(Collectors.toList())));
     remoteConfigsManager.set(config);
   }
 
@@ -119,7 +109,6 @@ public class RemoteConfigController {
       throw new WebApplicationException(Response.Status.FORBIDDEN);
     }
 
-    adminEventLogger.logEvent(new RemoteConfigDeleteEvent(configToken, name));
     remoteConfigsManager.delete(name);
   }
 

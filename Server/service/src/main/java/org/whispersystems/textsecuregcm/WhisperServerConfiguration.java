@@ -19,9 +19,7 @@ import org.whispersystems.textsecuregcm.configuration.ApnConfiguration;
 import org.whispersystems.textsecuregcm.configuration.AppConfigConfiguration;
 import org.whispersystems.textsecuregcm.configuration.AwsAttachmentsConfiguration;
 import org.whispersystems.textsecuregcm.configuration.BadgesConfiguration;
-import org.whispersystems.textsecuregcm.configuration.BraintreeConfiguration;
 import org.whispersystems.textsecuregcm.configuration.CdnConfiguration;
-import org.whispersystems.textsecuregcm.configuration.DatadogConfiguration;
 import org.whispersystems.textsecuregcm.configuration.DirectoryConfiguration;
 import org.whispersystems.textsecuregcm.configuration.DirectoryV2Configuration;
 import org.whispersystems.textsecuregcm.configuration.DynamoDbClientConfiguration;
@@ -31,7 +29,6 @@ import org.whispersystems.textsecuregcm.configuration.GcpAttachmentsConfiguratio
 import org.whispersystems.textsecuregcm.configuration.HCaptchaConfiguration;
 import org.whispersystems.textsecuregcm.configuration.MaxDeviceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.MessageCacheConfiguration;
-import org.whispersystems.textsecuregcm.configuration.OneTimeDonationConfiguration;
 import org.whispersystems.textsecuregcm.configuration.PaymentsServiceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.ArtServiceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.RateLimitsConfiguration;
@@ -44,8 +41,6 @@ import org.whispersystems.textsecuregcm.configuration.ReportMessageConfiguration
 import org.whispersystems.textsecuregcm.configuration.SecureBackupServiceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.SecureStorageServiceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.SecureValueRecovery2Configuration;
-import org.whispersystems.textsecuregcm.configuration.StripeConfiguration;
-import org.whispersystems.textsecuregcm.configuration.SubscriptionConfiguration;
 import org.whispersystems.textsecuregcm.configuration.TestDeviceConfiguration;
 import org.whispersystems.textsecuregcm.configuration.UnidentifiedDeliveryConfiguration;
 import org.whispersystems.textsecuregcm.configuration.ZkConfig;
@@ -58,16 +53,6 @@ public class WhisperServerConfiguration extends Configuration {
   @Valid
   @JsonProperty
   private AdminEventLoggingConfiguration adminEventLoggingConfiguration;
-
-  @NotNull
-  @Valid
-  @JsonProperty
-  private StripeConfiguration stripe;
-
-  @NotNull
-  @Valid
-  @JsonProperty
-  private BraintreeConfiguration braintree;
 
   @NotNull
   @Valid
@@ -93,11 +78,6 @@ public class WhisperServerConfiguration extends Configuration {
   @Valid
   @JsonProperty
   private CdnConfiguration cdn;
-
-  @NotNull
-  @Valid
-  @JsonProperty
-  private DatadogConfiguration datadog;
 
   @NotNull
   @Valid
@@ -240,16 +220,6 @@ public class WhisperServerConfiguration extends Configuration {
   private BadgesConfiguration badges;
 
   @Valid
-  @JsonProperty
-  @NotNull
-  private SubscriptionConfiguration subscription;
-
-  @Valid
-  @JsonProperty
-  @NotNull
-  private OneTimeDonationConfiguration oneTimeDonations;
-
-  @Valid
   @NotNull
   @JsonProperty
   private ReportMessageConfiguration reportMessage = new ReportMessageConfiguration();
@@ -265,14 +235,6 @@ public class WhisperServerConfiguration extends Configuration {
 
   public AdminEventLoggingConfiguration getAdminEventLoggingConfiguration() {
     return adminEventLoggingConfiguration;
-  }
-
-  public StripeConfiguration getStripe() {
-    return stripe;
-  }
-
-  public BraintreeConfiguration getBraintree() {
-    return braintree;
   }
 
   public DynamoDbClientConfiguration getDynamoDbClientConfiguration() {
@@ -367,10 +329,6 @@ public class WhisperServerConfiguration extends Configuration {
     return cdn;
   }
 
-  public DatadogConfiguration getDatadogConfiguration() {
-    return datadog;
-  }
-
   public UnidentifiedDeliveryConfiguration getDeliveryCertificate() {
     return unidentifiedDelivery;
   }
@@ -423,14 +381,6 @@ public class WhisperServerConfiguration extends Configuration {
 
   public BadgesConfiguration getBadges() {
     return badges;
-  }
-
-  public SubscriptionConfiguration getSubscription() {
-    return subscription;
-  }
-
-  public OneTimeDonationConfiguration getOneTimeDonations() {
-    return oneTimeDonations;
   }
 
   public ReportMessageConfiguration getReportMessageConfiguration() {
