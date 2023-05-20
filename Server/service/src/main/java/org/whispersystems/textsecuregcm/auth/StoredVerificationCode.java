@@ -7,6 +7,9 @@ package org.whispersystems.textsecuregcm.auth;
 
 import java.security.MessageDigest;
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.Objects;
+
 import javax.annotation.Nullable;
 import org.whispersystems.textsecuregcm.util.Util;
 
@@ -27,4 +30,23 @@ public record StoredVerificationCode(String code,
 
     return MessageDigest.isEqual(ourCode, theirCode);
   }
+
+  @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StoredVerificationCode)) return false;
+
+        StoredVerificationCode other = (StoredVerificationCode) o;
+        return timestamp == other.timestamp &&
+                Objects.equals(code, other.code) &&
+                Objects.equals(pushCode, other.pushCode) &&
+                Arrays.equals(sessionId, other.sessionId);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = Objects.hash(code, timestamp, pushCode);
+        hash = 31 * hash + Arrays.hashCode(sessionId);
+        return hash;
+    }
 }

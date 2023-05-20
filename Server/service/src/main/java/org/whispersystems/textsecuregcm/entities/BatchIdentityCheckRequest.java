@@ -5,7 +5,9 @@
 
 package org.whispersystems.textsecuregcm.entities;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import javax.annotation.Nullable;
 import javax.validation.Valid;
@@ -32,6 +34,23 @@ public record BatchIdentityCheckRequest(@Valid @NotNull @Size(max = 1000) List<E
       if (aci != null && uuid != null) {
         throw new IllegalArgumentException("aci and uuid cannot both be non-null");
       }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Element)) return false;
+        Element that = (Element) o;
+        return Objects.equals(aci, that.aci) &&
+                Objects.equals(uuid, that.uuid) &&
+                Arrays.equals(fingerprint, that.fingerprint);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(aci, uuid);
+        result = 31 * result + Arrays.hashCode(fingerprint);
+        return result;
     }
   }
 }

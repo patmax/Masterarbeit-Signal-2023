@@ -27,6 +27,7 @@ import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -325,7 +326,24 @@ public class AccountsManager {
     return updatedAccount.get();
   }
 
-  public record UsernameReservation(Account account, byte[] reservedUsernameHash){}
+  public record UsernameReservation(Account account, byte[] reservedUsernameHash){
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UsernameReservation)) return false;
+
+        UsernameReservation other = (UsernameReservation) o;
+        return Objects.equals(account, other.account) &&
+                Arrays.equals(reservedUsernameHash, other.reservedUsernameHash);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = Objects.hash(account);
+        hash = 31 * hash + Arrays.hashCode(reservedUsernameHash);
+        return hash;
+    }
+  }
 
   /**
    * Reserve a username hash so that no other accounts may take it.
