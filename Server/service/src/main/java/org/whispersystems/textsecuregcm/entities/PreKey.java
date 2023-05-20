@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class PreKey {
+public class PreKey implements Cloneable {
 
   @JsonProperty
   @NotNull
@@ -63,5 +63,14 @@ public class PreKey {
       return ((int)this.keyId) ^ publicKey.hashCode();
     }
   }
+
+  @Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
 
 }

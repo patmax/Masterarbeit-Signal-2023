@@ -8,6 +8,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StickerPackFormUploadAttributes {
 
@@ -29,18 +30,18 @@ public class StickerPackFormUploadAttributes {
   }
 
   public StickerPackFormUploadItem getManifest() {
-    return manifest;
+    return manifest == null ? null : (StickerPackFormUploadItem) manifest.clone();
   }
 
   public List<StickerPackFormUploadItem> getStickers() {
-    return stickers;
+    return stickers.stream().collect(Collectors.toList());
   }
 
   public String getPackId() {
     return packId;
   }
 
-  public static class StickerPackFormUploadItem {
+  public static class StickerPackFormUploadItem implements Cloneable {
     @JsonProperty
     private int id;
 
@@ -108,6 +109,15 @@ public class StickerPackFormUploadAttributes {
 
     public int getId() {
       return id;
+    }
+
+    @Override
+    public Object clone() {
+      try {
+        return super.clone();
+      } catch (CloneNotSupportedException cnse) {
+        throw new RuntimeException("Cloning not supported", cnse);
+      }
     }
   }
 

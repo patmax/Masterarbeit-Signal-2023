@@ -91,7 +91,7 @@ public class AccountAttributes {
   }
 
   public byte[] getUnidentifiedAccessKey() {
-    return unidentifiedAccessKey;
+    return unidentifiedAccessKey == null ? null : unidentifiedAccessKey.clone();
   }
 
   public boolean isUnrestrictedUnidentifiedAccess() {
@@ -99,7 +99,7 @@ public class AccountAttributes {
   }
 
   public DeviceCapabilities getCapabilities() {
-    return capabilities;
+    return capabilities == null ? null : (DeviceCapabilities) capabilities.clone();
   }
 
   public boolean isDiscoverableByPhoneNumber() {

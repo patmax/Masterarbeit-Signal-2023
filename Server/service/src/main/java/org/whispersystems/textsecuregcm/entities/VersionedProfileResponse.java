@@ -8,7 +8,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
-public class VersionedProfileResponse {
+public class VersionedProfileResponse implements Cloneable {
 
   @JsonUnwrapped
   private BaseProfileResponse baseProfileResponse;
@@ -47,7 +47,7 @@ public class VersionedProfileResponse {
   }
 
   public BaseProfileResponse getBaseProfileResponse() {
-    return baseProfileResponse;
+    return baseProfileResponse == null ? null : (BaseProfileResponse) baseProfileResponse.clone();
   }
 
   public String getName() {
@@ -69,4 +69,13 @@ public class VersionedProfileResponse {
   public String getPaymentAddress() {
     return paymentAddress;
   }
+
+  @Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
 }

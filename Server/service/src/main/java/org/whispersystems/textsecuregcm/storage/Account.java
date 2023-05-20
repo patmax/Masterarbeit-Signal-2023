@@ -15,9 +15,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import javax.annotation.Nullable;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import org.glassfish.jersey.client.internal.routing.ClientResponseMediaTypeDeterminer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.whispersystems.textsecuregcm.auth.SaltedTokenHash;
@@ -173,7 +177,7 @@ public class Account {
   public List<Device> getDevices() {
     requireNotStale();
 
-    return devices;
+    return devices.stream().collect(Collectors.toList());
   }
 
   public Optional<Device> getMasterDevice() {
@@ -325,7 +329,7 @@ public class Account {
   public List<AccountBadge> getBadges() {
     requireNotStale();
 
-    return badges;
+    return badges.stream().collect(Collectors.toList());
   }
 
   public void setBadges(Clock clock, List<AccountBadge> badges) {

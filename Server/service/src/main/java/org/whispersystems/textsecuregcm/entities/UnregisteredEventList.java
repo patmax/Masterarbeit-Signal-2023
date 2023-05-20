@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UnregisteredEventList {
 
@@ -17,6 +18,6 @@ public class UnregisteredEventList {
 
   public List<UnregisteredEvent> getDevices() {
     if (devices == null) return new LinkedList<>();
-    else                 return devices;
+    else                 return devices.stream().collect(Collectors.toList());
   }
 }

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MessageResponse {
   private List<String> success;
@@ -29,7 +30,7 @@ public class MessageResponse {
   public MessageResponse() {}
 
   public List<String> getSuccess() {
-    return success;
+    return success.stream().collect(Collectors.toList());
   }
 
   public void setSuccess(List<String> success) {
@@ -37,7 +38,7 @@ public class MessageResponse {
   }
 
   public List<String> getFailure() {
-    return failure;
+    return failure.stream().collect(Collectors.toList());
   }
 
   public void setFailure(List<String> failure) {
@@ -45,7 +46,7 @@ public class MessageResponse {
   }
 
   public Set<String> getNumbersMissingDevices() {
-    return missingDeviceIds;
+    return missingDeviceIds.stream().collect(Collectors.toSet());
   }
 
   public void setNumbersMissingDevices(Set<String> numbersMissingDevices) {

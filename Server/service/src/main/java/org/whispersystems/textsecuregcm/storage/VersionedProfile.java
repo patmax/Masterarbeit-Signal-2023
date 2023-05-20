@@ -69,7 +69,7 @@ public class VersionedProfile {
   }
 
   public byte[] getCommitment() {
-    return commitment;
+    return commitment == null ? null : commitment.clone();
   }
 
   @Override

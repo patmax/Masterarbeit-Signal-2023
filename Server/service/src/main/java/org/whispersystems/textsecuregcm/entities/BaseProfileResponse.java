@@ -8,8 +8,9 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-public class BaseProfileResponse {
+public class BaseProfileResponse implements Cloneable {
 
   @JsonProperty
   private String identityKey;
@@ -64,10 +65,19 @@ public class BaseProfileResponse {
   }
 
   public List<Badge> getBadges() {
-    return badges;
+    return badges.stream().collect(Collectors.toList());
   }
 
   public UUID getUuid() {
     return uuid;
   }
+
+  @Override
+	public Object clone() {
+		try {
+      return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+      throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
 }

@@ -7,7 +7,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.annotations.VisibleForTesting;
 
-public class PreKeyResponseItem {
+public class PreKeyResponseItem implements Cloneable {
 
   @JsonProperty
   private long deviceId;
@@ -32,12 +32,12 @@ public class PreKeyResponseItem {
 
   @VisibleForTesting
   public SignedPreKey getSignedPreKey() {
-    return signedPreKey;
+    return signedPreKey == null ? null : (SignedPreKey) signedPreKey.clone();
   }
 
   @VisibleForTesting
   public PreKey getPreKey() {
-    return preKey;
+    return preKey == null ? null : (PreKey) preKey.clone();
   }
 
   @VisibleForTesting
@@ -49,4 +49,13 @@ public class PreKeyResponseItem {
   public long getDeviceId() {
     return deviceId;
   }
+
+  @Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
 }

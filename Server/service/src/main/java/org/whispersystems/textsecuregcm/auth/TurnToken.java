@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TurnToken {
 
@@ -29,6 +30,6 @@ public class TurnToken {
 
   @VisibleForTesting
   List<String> getUrls() {
-    return urls;
+    return urls.stream().collect(Collectors.toList());
   }
 }

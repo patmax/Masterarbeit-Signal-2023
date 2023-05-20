@@ -3,6 +3,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CurrencyConversionEntityList {
 
@@ -20,7 +21,7 @@ public class CurrencyConversionEntityList {
   public CurrencyConversionEntityList() {}
 
   public List<CurrencyConversionEntity> getCurrencies() {
-    return currencies;
+    return currencies.stream().collect(Collectors.toList());
   }
 
   public long getTimestamp() {

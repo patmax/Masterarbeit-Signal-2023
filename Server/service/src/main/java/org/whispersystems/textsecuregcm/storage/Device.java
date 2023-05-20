@@ -13,7 +13,7 @@ import org.whispersystems.textsecuregcm.auth.SaltedTokenHash;
 import org.whispersystems.textsecuregcm.entities.SignedPreKey;
 import org.whispersystems.textsecuregcm.util.Util;
 
-public class Device {
+public class Device implements Cloneable {
 
   public static final long MASTER_ID = 1;
 
@@ -182,7 +182,7 @@ public class Device {
 
   @Nullable
   public DeviceCapabilities getCapabilities() {
-    return capabilities;
+    return capabilities == null ? null : (DeviceCapabilities) capabilities.clone();
   }
 
   public void setCapabilities(DeviceCapabilities capabilities) {
@@ -225,7 +225,7 @@ public class Device {
   }
 
   public SignedPreKey getSignedPreKey() {
-    return signedPreKey;
+    return signedPreKey == null ? null : (SignedPreKey) signedPreKey.clone();
   }
 
   public void setSignedPreKey(SignedPreKey signedPreKey) {
@@ -233,7 +233,7 @@ public class Device {
   }
 
   public SignedPreKey getPhoneNumberIdentitySignedPreKey() {
-    return phoneNumberIdentitySignedPreKey;
+    return phoneNumberIdentitySignedPreKey == null ? null : (SignedPreKey) phoneNumberIdentitySignedPreKey.clone();
   }
 
   public void setPhoneNumberIdentitySignedPreKey(final SignedPreKey phoneNumberIdentitySignedPreKey) {
@@ -252,7 +252,16 @@ public class Device {
     return this.userAgent;
   }
 
-  public static class DeviceCapabilities {
+  @Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
+
+  public static class DeviceCapabilities implements Cloneable {
     @JsonProperty
     private boolean storage;
 
@@ -281,6 +290,15 @@ public class Device {
     private boolean paymentActivation;
 
     public DeviceCapabilities() {
+    }
+
+    @Override
+    public Object clone() {
+      try {
+        return super.clone();
+      } catch (CloneNotSupportedException cnse) {
+        throw new RuntimeException("Cloning not supported", cnse);
+      }
     }
 
     public DeviceCapabilities(boolean storage, boolean transfer,

@@ -20,6 +20,6 @@ public abstract class CredentialProfileResponse {
   }
 
   public VersionedProfileResponse getVersionedProfileResponse() {
-    return versionedProfileResponse;
+    return versionedProfileResponse == null ? null : (VersionedProfileResponse) versionedProfileResponse.clone();
   }
 }

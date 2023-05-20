@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
 import java.util.Objects;
 
-public class AccountBadge {
+public class AccountBadge implements Cloneable {
 
   private final String id;
   private final Instant expiration;
@@ -101,4 +101,13 @@ public class AccountBadge {
         ", visible=" + visible +
         '}';
   }
+  
+  @Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			throw new RuntimeException("Cloning not supported", cnse);
+		}
+	}
 }

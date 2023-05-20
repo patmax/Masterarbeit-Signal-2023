@@ -7,6 +7,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ActiveUserTally {
   @JsonProperty
@@ -31,11 +32,21 @@ public class ActiveUserTally {
   }
 
   public Map<String, long[]> getPlatforms() {
-    return this.platforms;
+    return platforms.entrySet()
+      .stream()
+      .collect(
+          Collectors
+              .toMap(Map.Entry::getKey,
+                    Map.Entry::getValue));
   }
 
   public Map<String, long[]> getCountries() {
-    return this.countries;
+    return countries.entrySet()
+      .stream()
+      .collect(
+          Collectors
+              .toMap(Map.Entry::getKey,
+                    Map.Entry::getValue));
   }
 
   public void setFromUuid(UUID fromUuid) {

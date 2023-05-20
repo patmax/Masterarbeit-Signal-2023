@@ -7,6 +7,7 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class DirectoryReconciliationRequest {
 
@@ -21,7 +22,7 @@ public class DirectoryReconciliationRequest {
   }
 
   public List<User> getUsers() {
-    return users;
+    return users.stream().collect(Collectors.toList());
   }
 
   public static class User {

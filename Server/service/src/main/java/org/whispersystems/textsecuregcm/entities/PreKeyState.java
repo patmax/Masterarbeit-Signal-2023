@@ -7,6 +7,8 @@ package org.whispersystems.textsecuregcm.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -37,11 +39,11 @@ public class PreKeyState {
   }
 
   public List<PreKey> getPreKeys() {
-    return preKeys;
+    return preKeys.stream().collect(Collectors.toList());
   }
 
   public SignedPreKey getSignedPreKey() {
-    return signedPreKey;
+    return signedPreKey == null ? null : (SignedPreKey) signedPreKey.clone();
   }
 
   public String getIdentityKey() {
