@@ -62,7 +62,7 @@ public class PhoneNumberIdentifiers {
 
     final UUID phoneNumberIdentifier;
 
-    if (response.hasItem()) {
+    if (response != null && response.hasItem()) {
       phoneNumberIdentifier = AttributeValues.getUUID(response.item(), ATTR_PHONE_NUMBER_IDENTIFIER, null);
     } else {
       phoneNumberIdentifier = generatePhoneNumberIdentifierIfNotExists(phoneNumber);

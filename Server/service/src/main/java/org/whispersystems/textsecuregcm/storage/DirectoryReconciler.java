@@ -78,8 +78,8 @@ public class DirectoryReconciler extends AccountDatabaseCrawlerListener {
     final DirectoryReconciliationResponse addUsersResponse = sendAdditions(addUsersRequest);
     final DirectoryReconciliationResponse deleteUsersResponse = sendDeletes(deleteUsersRequest);
 
-    if (addUsersResponse.getStatus() == DirectoryReconciliationResponse.Status.MISSING
-        || deleteUsersResponse.getStatus() == Status.MISSING) {
+    if (addUsersResponse == null || addUsersResponse.getStatus() == DirectoryReconciliationResponse.Status.MISSING
+        || deleteUsersResponse == null || deleteUsersResponse.getStatus() == Status.MISSING) {
 
       throw new AccountDatabaseCrawlerRestartException("directory reconciler missing");
     }
