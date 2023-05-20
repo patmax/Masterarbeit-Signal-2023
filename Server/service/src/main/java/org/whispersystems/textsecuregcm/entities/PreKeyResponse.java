@@ -35,7 +35,7 @@ public class PreKeyResponse {
   public PreKeyResponseItem getDevice(int deviceId) {
     for (PreKeyResponseItem device : devices) {
       if (device.getDeviceId() == deviceId) 
-        return device == null ? null : (PreKeyResponseItem) device.clone();
+        return (PreKeyResponseItem) device.clone();
     }
 
     return null;
