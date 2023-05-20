@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @param <T> the type of the objects to select from
  */
-public class WeightedRandomSelect<T> {
+public final class WeightedRandomSelect<T> {
 
   List<Pair<T, Long>> weightedItems;
   long totalWeight;
