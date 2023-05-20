@@ -32,8 +32,8 @@ public class NetworkSentGauge extends NetworkGauge {
     try {
       long             timestamp        = System.currentTimeMillis();
       Pair<Long, Long> sentAndReceived  = getSentReceived();
-      double           bytesTransmitted = sentAndReceived.first() - lastSent;
-      double           secondsElapsed   = (timestamp - this.lastTimestamp) / 1000;
+      double           bytesTransmitted = sentAndReceived.first() - (double) lastSent;
+      double           secondsElapsed   = (timestamp - this.lastTimestamp) / (double) 1000;
       double           result           = bytesTransmitted / secondsElapsed;
 
       this.lastSent      = sentAndReceived.first();
