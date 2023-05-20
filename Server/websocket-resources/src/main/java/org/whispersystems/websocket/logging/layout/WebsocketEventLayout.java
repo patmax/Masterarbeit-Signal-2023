@@ -21,16 +21,7 @@ import java.util.Map;
 
 public class WebsocketEventLayout extends PatternLayoutBase<WebsocketEvent> {
 
-  private static final Map<String, String> DEFAULT_CONVERTERS = new HashMap<>() {{
-    put("h", RemoteHostConverter.class.getName());
-    put("l", NAConverter.class.getName());
-    put("u", NAConverter.class.getName());
-    put("t", DateConverter.class.getName());
-    put("r", RequestUrlConverter.class.getName());
-    put("s", StatusCodeConverter.class.getName());
-    put("b", ContentLengthConverter.class.getName());
-    put("i", RequestHeaderConverter.class.getName());
-  }};
+  private static final Map<String, String> DEFAULT_CONVERTERS = new HashMap<>();
 
   public static final String CLF_PATTERN = "%h %l %u [%t] \"%r\" %s %b";
   public static final String CLF_PATTERN_NAME = "common";
@@ -40,6 +31,15 @@ public class WebsocketEventLayout extends PatternLayoutBase<WebsocketEvent> {
   public static final String HEADER_PREFIX = "#logback.access pattern: ";
 
   public WebsocketEventLayout(Context context) {
+    DEFAULT_CONVERTERS.put("h", RemoteHostConverter.class.getName());
+    DEFAULT_CONVERTERS.put("l", NAConverter.class.getName());
+    DEFAULT_CONVERTERS.put("u", NAConverter.class.getName());
+    DEFAULT_CONVERTERS.put("t", DateConverter.class.getName());
+    DEFAULT_CONVERTERS.put("r", RequestUrlConverter.class.getName());
+    DEFAULT_CONVERTERS.put("s", StatusCodeConverter.class.getName());
+    DEFAULT_CONVERTERS.put("b", ContentLengthConverter.class.getName());
+    DEFAULT_CONVERTERS.put("i", RequestHeaderConverter.class.getName());
+
     setOutputPatternAsHeader(false);
     setPattern(COMBINED_PATTERN);
     setContext(context);

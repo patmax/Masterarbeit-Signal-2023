@@ -34,6 +34,8 @@ public final class HmacUtils {
       return mac.doFinal(input);
     } catch (final InvalidKeyException e) {
       throw new RuntimeException(e);
+    } finally {
+      THREAD_LOCAL_HMAC_SHA_256.remove();
     }
   }
 
