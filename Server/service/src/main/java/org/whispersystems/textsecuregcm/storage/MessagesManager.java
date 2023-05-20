@@ -153,9 +153,13 @@ public class MessagesManager {
           .get(30, TimeUnit.SECONDS).size();
       persistMessageMeter.mark(nonEphemeralMessages.size());
 
-    } catch (InterruptedException | ExecutionException | TimeoutException e) {
+    } catch (InterruptedException ie) {
+      logger.warn("Failed to remove messages from cache", ie);
+      Thread.currentThread().interrupt();
+    } catch (ExecutionException | TimeoutException e) {
       logger.warn("Failed to remove messages from cache", e);
     }
+
     return messagesRemovedFromCache;
   }
 

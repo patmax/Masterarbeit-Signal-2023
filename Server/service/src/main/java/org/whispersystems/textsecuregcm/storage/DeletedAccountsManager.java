@@ -169,6 +169,7 @@ public class DeletedAccountsManager {
             lockAcquired = true;
           } catch (final InterruptedException e) {
             log.warn("Interrupted while acquiring lock for reconciliation", e);
+            Thread.currentThread().interrupt();
           } catch (final LockCurrentlyUnavailableException ignored) {
           }
 

@@ -112,6 +112,7 @@ public class MessagePersister implements Managed {
         workerThread.join();
       } catch (final InterruptedException e) {
         logger.warn("Interrupted while waiting for worker thread to complete current operation");
+        Thread.currentThread().interrupt();
       }
     }
   }
