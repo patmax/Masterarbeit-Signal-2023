@@ -3,6 +3,22 @@
 # `unset` values will need to be set to work properly.
 # Most other values are technically valid for a local/demonstration environment, but are probably not production-ready.
 
+server:
+  applicationConnectors:
+  - type: http
+    port: 80
+  adminConnectors:
+  - type: http
+    port: 8081
+   
+testDevices:
+  - number: "+49123456789"
+    code: 123456
+    
+maxDevices:
+  - number: +49123456789
+    count: 10
+
 adminEventLoggingConfiguration:
   credentials: |
     Some credentials text
@@ -10,106 +26,81 @@ adminEventLoggingConfiguration:
   projectId: some-project-id
   logName: some-log-name
 
-stripe:
-  apiKey: unset
-  idempotencyKeyGenerator: abcdefg12345678= # base64 for creating request idempotency hash
-  boostDescription: >
-    Example
-  supportedCurrencies:
-    - xts
-  # - ...
-  # - Nth supported currency
-
-
-braintree:
-  merchantId: unset
-  publicKey: unset
-  privateKey: unset
-  environment: unset
-  graphqlUrl: unset
-  merchantAccounts:
-    # ISO 4217 currency code and its corresponding sub-merchant account
-    'xts': unset
-  supportedCurrencies:
-    - xts
-  # - ...
-  # - Nth supported currency
-
 dynamoDbClientConfiguration:
-  region: us-west-2 # AWS Region
+  region: eu-central-1 # AWS Region
 
 dynamoDbTables:
   accounts:
-    tableName: Example_Accounts
-    phoneNumberTableName: Example_Accounts_PhoneNumbers
-    phoneNumberIdentifierTableName: Example_Accounts_PhoneNumberIdentifiers
-    usernamesTableName: Example_Accounts_Usernames
+    tableName: Accounts
+    phoneNumberTableName: Accounts_PhoneNumbers
+    phoneNumberIdentifierTableName: Accounts_PhoneNumberIdentifiers
+    usernamesTableName: Accounts_Usernames
     scanPageSize: 100
   deletedAccounts:
-    tableName: Example_DeletedAccounts
+    tableName: DeletedAccounts
     needsReconciliationIndexName: NeedsReconciliation
   deletedAccountsLock:
-    tableName: Example_DeletedAccountsLock
+    tableName: DeletedAccountsLock
   issuedReceipts:
-    tableName: Example_IssuedReceipts
+    tableName: IssuedReceipts
     expiration: P30D # Duration of time until rows expire
     generator: abcdefg12345678= # random base64-encoded binary sequence
   keys:
-    tableName: Example_Keys
+    tableName: Keys
   messages:
-    tableName: Example_Messages
+    tableName: Messages
     expiration: P30D # Duration of time until rows expire
   pendingAccounts:
-    tableName: Example_PendingAccounts
+    tableName: PendingAccounts
   pendingDevices:
-    tableName: Example_PendingDevices
+    tableName: PendingDevices
   phoneNumberIdentifiers:
-    tableName: Example_PhoneNumberIdentifiers
+    tableName: PhoneNumberIdentifiers
   profiles:
-    tableName: Example_Profiles
+    tableName: Profiles
   pushChallenge:
-    tableName: Example_PushChallenge
+    tableName: PushChallenge
   redeemedReceipts:
-    tableName: Example_RedeemedReceipts
+    tableName: RedeemedReceipts
     expiration: P30D # Duration of time until rows expire
   remoteConfig:
-    tableName: Example_RemoteConfig
+    tableName: RemoteConfig
   reportMessage:
-    tableName: Example_ReportMessage
+    tableName: ReportMessage
   reservedUsernames:
-    tableName: Example_ReservedUsernames
+    tableName: ReservedUsernames
   subscriptions:
-    tableName: Example_Subscriptions
+    tableName: Subscriptions
   registrationRecovery:
-    tableName: Example_RegistrationRecovery
+    tableName: RegistrationRecovery
     expiration: P300D # Duration of time until rows expire
 
 cacheCluster: # Redis server configuration for cache cluster
-  configurationUri: redis://redis.example.com:6379/
+  configurationUri: redis://127.0.0.1:7001
 
 clientPresenceCluster: # Redis server configuration for client presence cluster
-  configurationUri: redis://redis.example.com:6379/
+  configurationUri: redis://127.0.0.1:7002
 
 pubsub: # Redis server configuration for pubsub cluster
-  url: redis://redis.example.com:6379/
+  url: redis://127.0.0.1:7003
   replicaUrls:
-    - redis://redis.example.com:6379/
-
+    - redis://127.0.0.1:7003
+    
 pushSchedulerCluster: # Redis server configuration for push scheduler cluster
-  configurationUri: redis://redis.example.com:6379/
-
+  configurationUri: redis://127.0.0.1:7004
+ 
 rateLimitersCluster: # Redis server configuration for rate limiters cluster
-  configurationUri: redis://redis.example.com:6379/
+  configurationUri: redis://127.0.0.1:7005
 
 directory:
   client: # Configuration for interfacing with Contact Discovery Service cluster
-    userAuthenticationTokenSharedSecret: 00000f # hex-encoded secret shared with CDS used to generate auth tokens for Signal users
-    userAuthenticationTokenUserIdSecret: 00000f # hex-encoded secret shared among Signal-Servers to obscure user phone numbers from CDS
+    userAuthenticationTokenSharedSecret: a2f8af78591f26f5d5cd64e1aa64b9ad # hex-encoded secret shared with CDS used to generate auth tokens for Signal users
+    userAuthenticationTokenUserIdSecret: d70747757ef9b666092f301b24262929 # hex-encoded secret shared among Signal-Servers to obscure user phone numbers from CDS
   sqs:
-    accessKey: test     # AWS SQS accessKey
-    accessSecret: test  # AWS SQS accessSecret
+    accessKey: <AccessKey>     # AWS SQS accessKey
+    accessSecret: <AccessSecret>  # AWS SQS accessSecret
     queueUrls: # AWS SQS queue urls
-      - https://sqs.example.com/directory.fifo
+      - https://sqs.eu-central-1.amazonaws.com/<FIFOQueueURL>
   server: # One or more CDS servers
     - replicationName: example           # CDS replication name
       replicationUrl: cds.example.com    # CDS replication endpoint base url
@@ -117,31 +108,13 @@ directory:
       replicationCaCertificates:         # CDS replication endpoint TLS certificate trust root
         - |
           -----BEGIN CERTIFICATE-----
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-          AAAAAAAAAAAAAAAAAAAA
+          <CERT>
           -----END CERTIFICATE-----
 
 directoryV2:
   client: # Configuration for interfacing with Contact Discovery Service v2 cluster
-    userAuthenticationTokenSharedSecret: abcdefghijklmnopqrstuvwxyz0123456789ABCDEFG= # base64-encoded secret shared with CDS to generate auth tokens for Signal users
-    userIdTokenSharedSecret: bbcdefghijklmnopqrstuvwxyz0123456789ABCDEFG= # base64-encoded secret shared with CDS to generate auth identity tokens for Signal users
+    userAuthenticationTokenSharedSecret: Dx9/dxgdVWPazjTqCD6nMdAwS7pnnA5GsiM+aN4pQok= # base64-encoded secret shared with CDS to generate auth tokens for Signal users
+    userIdTokenSharedSecret: Dx9/dxgdVWPazjTqCD6nMdAwS7pnnA5GsiM+aN4pQok=  # base64-encoded secret shared with CDS to generate auth identity tokens for Signal users
 
 svr2:
   userAuthenticationTokenSharedSecret: abcdefghijklmnopqrstuvwxyz0123456789ABCDEFG= # base64-encoded secret shared with SVR2 to generate auth tokens for Signal users
@@ -149,52 +122,28 @@ svr2:
 
 messageCache: # Redis server configuration for message store cache
   persistDelayMinutes: 1
-  cluster:
-    configurationUri: redis://redis.example.com:6379/
+  cluster: 
+    configurationUri: redis://127.0.0.1:7006
 
 metricsCluster:
-  configurationUri: redis://redis.example.com:6379/
+  configurationUri: redis://127.0.0.1:7007
 
 awsAttachments: # AWS S3 configuration
-  accessKey: test
-  accessSecret: test
-  bucket: aws-attachments
-  region: us-west-2
+  accessKey: <AccessKey>
+  accessSecret: <AccessSecret>
+  bucket: localsignalattachments
+  region: eu-central-1
 
 gcpAttachments: # GCP Storage configuration
-  domain: example.com
-  email: user@example.cocm
-  maxSizeInBytes: 1024
+  domain: localsignal
+  email: <EMAIL>
+  maxSizeInBytes: 100000000
   pathPrefix:
   rsaSigningKey: |
     -----BEGIN PRIVATE KEY-----
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    AAAAAAAA
+    <SIGNING_KEY>
     -----END PRIVATE KEY-----
+
 
 accountDatabaseCrawler:
   chunkSize: 10           # accounts per run
@@ -218,18 +167,14 @@ fcm: # FCM configuration
     { "json": true }
 
 cdn:
-  accessKey: test    # AWS Access Key ID
-  accessSecret: test # AWS Access Secret
-  bucket: cdn        # S3 Bucket name
-  region: us-west-2  # AWS region
-
-datadog:
-  apiKey: unset
-  environment: dev
+  accessKey: <AccessKey>    # AWS Access Key ID
+  accessSecret: <AccessSecret> # AWS Access Secret
+  bucket: localsignalbucket        # S3 Bucket name
+  region: eu-central-1 # AWS region
 
 unidentifiedDelivery:
-  certificate: ABCD1234
-  privateKey: ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789AAAAAAA
+  certificate: CiUIABIhBeyk+7tBOaX6ph73VJqsFcwMf9U+qG4CHdXu+yZT12ZEEkAdCcf+j/GOMn4EYHptVXcqOBePSK4ohoXhwCsxt9jUx4hFbeTbNwO5JpbRlTACvkKo7NRoMNnyIloTPwRynVKO
+  privateKey: oHoT1iyr5wfCE7gc0e2NACGOLFBgUzG3/QEFIKbUEUc=
   expiresDays: 7
 
 recaptcha:
@@ -244,63 +189,27 @@ storageService:
   userAuthenticationTokenSharedSecret: 00000f
   storageCaCertificates:
     - |
-      -----BEGIN CERTIFICATE-----
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      AAAAAAAAAAAAAAAAAAAA
-      -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        <Certificate>
+        -----END CERTIFICATE-----
 
 backupService:
   uri: backup.example.com
   userAuthenticationTokenSharedSecret: 00000f
   backupCaCertificates:
     - |
-      -----BEGIN CERTIFICATE-----
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-      AAAAAAAAAAAAAAAAAAAA
-      -----END CERTIFICATE-----
-
+        -----BEGIN CERTIFICATE-----
+        <Certificate>
+        -----END CERTIFICATE-----
+        
 zkConfig:
-  serverPublic: ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-  serverSecret: ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyzAA==
+  serverPublic: AD7kB2IYQ2TDsmvHWelL/AzyzS1uHvJ4jMVsNrmJpoMGqJlY/0Ex8Wx5QzSyivEl25eQydNvCk+PSQanFZHbizcw7avTZhE+wtiwsst0uiYJvmxtmmme8U4eMq7KUgnWL4Cy3qXAAkI3HKhE7/2DQmAP+xdbbR3zAadREPK7YxhQ/juv143AoTQnUh86/z9LduJmgckylaH9HjZQWhpb4HxWzhL6nxojhrOTcXNjMOYwF2wUgKvwly6B4F6Yc+fkSdTvI7VWVv95mowWOqnxpnAQ8B5qfz4+xAhvJOMbnD1+3JGH/6yn03DKzlxxA+xdf1dttfsAtRcoOG2TP4ZgnDYI6NHDcPbEO1uykF3JiUkEN7wOS5Nx7wmtYi8gm1fcLiii5FOYDRbTpTuRL1ArIIVbUo/6rvsmEyWhlUnLPSJEmvg6oBudk4s7YA16nPZw9Y2Dfm7hweRcXd95uJDtITGwrs2DM3hvkSOX6esF1wtHdb9hgNuca5bPfXplvUaZVWqaCg6AXAXreQ2qmzNRahOf/SyKCnfQDLD7B/Ix6mgJ
+  serverSecret: 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
 
 appConfig:
-  application: example
-  environment: example
-  configuration: example
+  application: LocalSignalServer
+  environment: LocalSignalEnvironment
+  configuration: LocalSignalConfiguration
 
 remoteConfig:
   authorizedTokens:
@@ -327,81 +236,30 @@ artService:
 
 badges:
   badges:
-    - id: TEST
-      category: other
+    - id: BOOST
+      category: donor
       sprites: # exactly 6
-        - sprite-1.png
-        - sprite-2.png
-        - sprite-3.png
-        - sprite-4.png
-        - sprite-5.png
-        - sprite-6.png
-      svg: example.svg
+        - 9f6c55b8b0d38cb10fafd6af70e57bb321c5db04c7ce0a2ee3dbb257d64b15d0.png
+        - 2259dc6eba1054d8f681ff72d3de552b5113a4bfe2019406c4aa99956077a8eb.png
+        - 4f46957049ee1b0caa1c67c1d26a14850abdb6a91da318d0bf1920480ca15769.png
+        - 83220e85bd0b05d87a684cd706b6ea4d49feead653ad891966b673461f86f484.png
+        - b75cc65b5311abd3a0ffcc0ed9f6eb3edaf48dae91d1ff0063ad9b124b5b7780.png
+        - f1a2086f6cbd303f65df1a6250ccc7dd075c9ba3fa5a0f9d226f5357b11939fd.png
+      svg: f43094dfb9e7ac76cfa25233756195b1da4c663ef563b0e3aabb19eb052bd587.svg
       svgs:
-        - light: example-light.svg
-          dark: example-dark.svg
+        - light: 063ca5f202e25d9a821ae8d3bb9ea8defd4ca5dcb5dd09a79e0b5816fbce2b59.svg
+          dark: 30200b87c92e8e7e8d006250e82a17deeb5e1bb535d81af96db0593c41e11455.svg
   badgeIdsEnabledForAll:
-    - TEST
+    - BOOST
   receiptLevels:
-    '1': TEST
-
-subscription: # configuration for Stripe subscriptions
-  badgeGracePeriod: P15D
-  levels:
-    500:
-      badge: EXAMPLE
-      prices:
-        # list of ISO 4217 currency codes and amounts for the given badge level
-        xts:
-          amount: '10'
-          processorIds:
-            STRIPE: price_example   # stripe Price ID
-            BRAINTREE: plan_example # braintree Plan ID
-
-oneTimeDonations:
-  boost:
-    level: 1
-    expiration: P90D
-    badge: EXAMPLE
-  gift:
-    level: 10
-    expiration: P90D
-    badge: EXAMPLE
-  currencies:
-    # ISO 4217 currency codes and amounts in those currencies
-    xts:
-      minimum: '0.5'
-      gift: '2'
-      boosts:
-        - '1'
-        - '2'
-        - '4'
-        - '8'
-        - '20'
-        - '40'
-
+    '1': BOOST
+    
 registrationService:
-  host: registration.example.com
+  host: 127.0.0.1
   apiKey: EXAMPLE
+  port: 50051
   registrationCaCertificate: | # Registration service TLS certificate trust root
     -----BEGIN CERTIFICATE-----
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
-    AAAAAAAAAAAAAAAAAAAA
+    <Certificate>
     -----END CERTIFICATE-----
+
