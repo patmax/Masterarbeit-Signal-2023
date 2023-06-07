@@ -1,0 +1,543 @@
+rule,component,line,message,severity,type
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/push/MessageSender.java,56,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1301,service/src/main/java/org/whispersystems/textsecuregcm/auth/PhoneVerificationTokenManager.java,58,"Replace this ""switch"" statement by ""if"" statements to increase readability.",MINOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/ChangeNumberRequest.java,18,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/RegistrationRequest.java,13,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,96,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/ConfirmUsernameHashRequest.java,14,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,27,"Remove this unused ""LOCKED_ACCOUNT_COUNTER_NAME"" private field.",MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,29,"Remove this unused ""LOCK_REASON_TAG_NAME"" private field.",MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,30,"Remove this unused ""ALREADY_LOCKED_TAG_NAME"" private field.",MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,33,"Remove this unused ""accounts"" private field.",MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,34,"Remove this unused ""clientPresenceManager"" private field.",MAJOR,CODE_SMELL
+java:S125,service/src/main/java/org/whispersystems/textsecuregcm/auth/RegistrationLockVerificationManager.java,78,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/controllers/RegistrationController.java,49,"Remove this unused ""logger"" private field.",MAJOR,CODE_SMELL
+java:S1301,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,168,"Replace this ""switch"" statement by ""if"" statements to increase readability.",MINOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,172,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/limits/PushChallengeManager.java,86,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/AccountIdentityResponse.java,11,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/entities/ReserveUsernameHashResponse.java,13,Remove this unused import 'java.util.UUID'.,MINOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/ReserveUsernameHashResponse.java,15,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/UsernameHashResponse.java,15,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountChangeValidator.java,10,Remove this unused import 'org.whispersystems.textsecuregcm.util.Optionals'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountChangeValidator.java,13,Remove this unused import 'java.util.Arrays'.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,327,"Define a constant instead of duplicating this literal ""#username_hash"" 4 times.",CRITICAL,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,458,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,328,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/ByteArrayBase64UrlAdapter.java,12,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,218,"Remove this unused ""reservation"" local variable.",MINOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,220,"Remove this unused ""result"" local variable.",MINOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,221,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/auth/BaseAccountAuthenticator.java,75,Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1117,service/src/main/java/org/whispersystems/textsecuregcm/storage/Device.java,175,"Rename ""salt"" which hides the field declared at line 29.",MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/SpamReport.java,10,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java,266,Refactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/configuration/SecureValueRecovery2Configuration.java,9,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/configuration/DirectoryV2ClientConfiguration.java,9,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/HmacUtils.java,16,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S5164,service/src/main/java/org/whispersystems/textsecuregcm/util/HmacUtils.java,22,"Call ""remove()"" on ""THREAD_LOCAL_HMAC_SHA_256"".",MAJOR,BUG
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/util/HmacUtils.java,26,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/util/HmacUtils.java,36,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,502,Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,524,Remove useless curly braces around statement and then remove useless return keyword,MINOR,CODE_SMELL
+java:S1301,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,124,"Replace this ""switch"" statement by ""if"" statements to increase readability.",MINOR,CODE_SMELL
+java:S1301,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,148,"Replace this ""switch"" statement by ""if"" statements to increase readability.",MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,175,Refactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,649,"Method has 11 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/entities/SpamReport.java,3,Remove this unused import 'com.fasterxml.jackson.annotation.JsonProperty'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/entities/SpamReport.java,7,Remove this unused import 'javax.validation.Valid'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/spam/ReportSpamTokenProvider.java,5,Remove this unused import 'java.util.function.Function'.,MINOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,347,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,401,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S125,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,401,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,409,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,358,"Define a constant instead of duplicating this literal ""#subscription_id"" 3 times.",CRITICAL,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/BraintreeManager.java,272,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/BraintreeManager.java,380,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/BraintreeManager.java,483,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1905,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/StripeManager.java,336,"Remove this unnecessary cast to ""CompletableFuture[]"".",MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/StripeManager.java,455,Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/SubscriptionCurrencyUtil.java,33,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S2184,service/src/main/java/org/whispersystems/textsecuregcm/util/Constants.java,12,"Cast one of the operands of this addition operation to a ""long"".",MINOR,BUG
+java:S125,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,334,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,101,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,272,"Define a constant instead of duplicating this literal ""#accessed_at"" 6 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,277,"Define a constant instead of duplicating this literal "":accessed_at"" 6 times.",CRITICAL,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/captcha/HCaptchaClient.java,75,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/captcha/HCaptchaResponse.java,42,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,819,"Define a constant instead of duplicating this literal ""error"" 3 times.",CRITICAL,CODE_SMELL
+java:S3740,service/src/main/java/org/whispersystems/textsecuregcm/mappers/CompletionExceptionMapper.java,30,Provide the parametrized type for this generic.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,153,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,264,"Define a constant instead of duplicating this literal ""#number"" 3 times.",CRITICAL,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,574,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,730,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,748,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,772,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,804,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,812,Rename this method to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/configuration/StripeConfiguration.java,12,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,950,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,961,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S2629,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/BraintreeGraphqlClient.java,295,Invoke method(s) only conditionally.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/BraintreeManager.java,55,"Constructor has 9 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/storage/Device.java,286,"Constructor has 9 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountCleaner.java,50,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,176,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,179,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,670,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,718,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,741,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,753,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/filters/RequestStatisticsFilter.java,32,Use already-defined constant 'IP_VERSION_TAG' instead of duplicating its value here.,CRITICAL,CODE_SMELL
+java:S3864,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,535,"Remove this use of ""Stream.peek"".",MAJOR,CODE_SMELL
+java:S1116,service/src/main/java/org/whispersystems/textsecuregcm/currency/CoinMarketCapClient.java,25,Remove this empty statement.,MINOR,CODE_SMELL
+java:S1116,service/src/main/java/org/whispersystems/textsecuregcm/currency/CoinMarketCapClient.java,27,Remove this empty statement.,MINOR,CODE_SMELL
+java:S1116,service/src/main/java/org/whispersystems/textsecuregcm/currency/CoinMarketCapClient.java,29,Remove this empty statement.,MINOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/currency/CoinMarketCapClient.java,60,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/currency/CurrencyConversionManager.java,94,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,171,"Constructor has 14 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1612,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,83,Replace this lambda with method reference 'RedisCommandTimeoutException.class::isInstance'.,MINOR,CODE_SMELL
+java:S116,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesManager.java,35,"Rename this field ""GET_MESSAGES_FOR_DEVICE_FLUX_NAME"" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.",MINOR,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,579,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/redis/ClusterLuaScript.java,113,"Define a constant instead of duplicating this literal ""Failed to execute script"" 3 times.",CRITICAL,CODE_SMELL
+java:S5993,service/src/main/java/org/whispersystems/textsecuregcm/storage/AbstractDynamoDbStore.java,48,"Change the visibility of this constructor to ""protected"".",MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesCache.java,184,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,138,"Define a constant instead of duplicating this literal ""Failed to parse envelope"" 3 times.",CRITICAL,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesManager.java,156,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/websocket/AuthenticatedConnectListener.java,43,"Remove this unused ""OPEN_WEBSOCKET_COUNTER_NAME"" private field.",MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/websocket/WebSocketConnection.java,300,Refactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,351,"Remove this use of ""REGION_TAG_NAME""; it is deprecated.",MINOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,430,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,84,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,353,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,293,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/auth/StoredVerificationCode.java,13,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/registration/ApiKeyCallCredentials.java,30,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/registration/RegistrationServiceClient.java,220,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,145,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,293,"Remove this use of ""REGION_TAG_NAME""; it is deprecated.",MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,688,"Method has 8 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,728,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/OutgoingMessageEntity.java,14,Override toString to consider array's content in the method,MAJOR,BUG
+java:S1118,websocket-resources/src/main/java/org/whispersystems/websocket/Stories.java,9,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1124,websocket-resources/src/main/java/org/whispersystems/websocket/Stories.java,10,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,821,"Remove this use of ""REGION_TAG_NAME""; it is deprecated.",MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,273,"Remove this use of ""REGION_TAG_NAME""; it is deprecated.",MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,423,"Remove this use of ""aci""; it is deprecated.",MINOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckRequest.java,23,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckRequest.java,23,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckRequest.java,23,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckResponse.java,18,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckResponse.java,18,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/entities/BatchIdentityCheckResponse.java,18,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,392,"Remove this use of ""aci""; it is deprecated.",MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,393,"Remove this use of ""aci""; it is deprecated.",MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/controllers/RemoteConfigController.java,106,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,17,Remove this unused import 'java.nio.charset.StandardCharsets'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,18,Remove this unused import 'java.security.MessageDigest'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,19,Remove this unused import 'java.security.NoSuchAlgorithmException'.,MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,121,"Constructor has 8 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,265,"Define a constant instead of duplicating this literal ""#data"" 5 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,268,"Define a constant instead of duplicating this literal ""#version"" 5 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,271,"Define a constant instead of duplicating this literal "":data"" 5 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,274,"Define a constant instead of duplicating this literal "":version"" 5 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,275,"Define a constant instead of duplicating this literal "":version_increment"" 5 times.",CRITICAL,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,335,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,339,"Define a constant instead of duplicating this literal ""#version = :version"" 3 times.",CRITICAL,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,395,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/storage/ProhibitedUsernames.java,56,Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1854,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,170,"Remove this useless assignment to local variable ""prohibitedUsernames"".",MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,170,"Remove this unused ""prohibitedUsernames"" local variable.",MINOR,CODE_SMELL
+java:S1854,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,169,"Remove this useless assignment to local variable ""prohibitedUsernames"".",MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,169,"Remove this unused ""prohibitedUsernames"" local variable.",MINOR,CODE_SMELL
+java:S1854,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,172,"Remove this useless assignment to local variable ""prohibitedUsernames"".",MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,172,"Remove this unused ""prohibitedUsernames"" local variable.",MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/auth/AccountAuthenticator.java,10,Remove this unused import 'org.whispersystems.textsecuregcm.experiment.ExperimentEnrollmentManager'.,MINOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/auth/DisabledPermittedAccountAuthenticator.java,11,Remove this unused import 'org.whispersystems.textsecuregcm.experiment.ExperimentEnrollmentManager'.,MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,418,"Remove this use of ""REGION_TAG_NAME""; it is deprecated.",MINOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/storage/ReportMessageDynamoDb.java,59,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S4276,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,511,Refactor this code to use the more specialised Functional Interface 'Predicate<Account>',MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/push/APNSender.java,81,Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1125,service/src/main/java/org/whispersystems/textsecuregcm/push/PushNotificationManager.java,60,Remove the unnecessary boolean literal.,MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/push/PushNotificationManager.java,103,Refactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S3398,service/src/main/java/org/whispersystems/textsecuregcm/push/ApnPushNotificationScheduler.java,237,"Move this method into ""NotificationWorker"".",MINOR,CODE_SMELL
+java:S2629,service/src/main/java/org/whispersystems/textsecuregcm/push/ApnPushNotificationScheduler.java,280,Use the built-in formatting to construct this argument.,MAJOR,CODE_SMELL
+java:S3457,service/src/main/java/org/whispersystems/textsecuregcm/push/ApnPushNotificationScheduler.java,280,Format specifiers should be used instead of string concatenation.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MessageMetrics.java,18,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/push/APNSender.java,136,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/push/APNSender.java,38,"Define a constant instead of duplicating this literal ""default"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/push/APNSender.java,39,"Define a constant instead of duplicating this literal ""APN_Message"" 4 times.",CRITICAL,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/websocket/AuthenticatedConnectListener.java,69,Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/websocket/AuthenticatedConnectListener.java,106,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesCache.java,432,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,538,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1141,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,665,Extract this nested try block into a separate method.,MAJOR,CODE_SMELL
+java:S6218,service/src/main/java/org/whispersystems/textsecuregcm/entities/GroupCredentials.java,14,"Override equals, hashCode and toString to consider array's content in the method",MAJOR,BUG
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagePersister.java,59,Refactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesManager.java,149,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1128,service/src/main/java/org/whispersystems/textsecuregcm/util/DestinationDeviceValidator.java,11,Remove this unused import 'java.util.Optional'.,MINOR,CODE_SMELL
+java:S4276,service/src/main/java/org/whispersystems/textsecuregcm/util/DestinationDeviceValidator.java,27,Refactor this code to use the more specialised Functional Interface 'ToLongFunction<T>',MINOR,CODE_SMELL
+java:S4276,service/src/main/java/org/whispersystems/textsecuregcm/util/DestinationDeviceValidator.java,27,Refactor this code to use the more specialised Functional Interface 'ToIntFunction<T>',MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/util/DestinationDeviceValidator.java,66,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeysController.java,151,Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,49,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,50,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,51,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,52,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S125,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,81,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/DestinationDeviceValidator.java,21,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/storage/PushFeedbackProcessor.java,39,Refactor this method to reduce its Cognitive Complexity from 56 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountChangeValidator.java,36,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountChangeValidator.java,43,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/entities/ExpiringProfileKeyCredentialResponseAdapter.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1611,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,384,"Remove the parentheses around the ""ignored"" parameter",MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,768,Make level a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/subscriptions/StripeManager.java,198,Use already-defined constant 'METADATA_KEY_LEVEL' instead of duplicating its value here.,CRITICAL,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,754,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeysController.java,95,Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S3416,service/src/main/java/org/whispersystems/textsecuregcm/storage/ChangeNumberManager.java,30,"Update this logger to use ""ChangeNumberManager.class"".",MINOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccounts.java,98,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/PhoneNumberIdentifiers.java,98,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1905,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,553,"Remove this unnecessary cast to ""Void"".",MINOR,CODE_SMELL
+java:S6242,service/src/main/java/org/whispersystems/textsecuregcm/storage/DynamicConfigurationManager.java,57,Set the credentials provider explicitly on this builder.,MAJOR,CODE_SMELL
+java:S6241,service/src/main/java/org/whispersystems/textsecuregcm/storage/DynamicConfigurationManager.java,57,Set the region explicitly on this builder.,MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MicrometerRegistryManager.java,20,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S4276,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,121,Refactor this code to use the more specialised Functional Interface 'BinaryOperator<Optional>',MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/workers/CheckDynamicConfigurationCommand.java,44,"Define a constant instead of duplicating this literal ""class"" 3 times.",CRITICAL,CODE_SMELL
+java:S5803,service/src/main/java/org/whispersystems/textsecuregcm/workers/CheckDynamicConfigurationCommand.java,57,"Remove this usage of ""parseConfiguration"", it is annotated with @VisibleForTesting and should not be accessed from production code.",CRITICAL,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CheckDynamicConfigurationCommand.java,58,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CheckDynamicConfigurationCommand.java,60,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/websocket/WebSocketConnection.java,173,"Constructor has 8 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/workers/AssignUsernameCommand.java,69,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,551,"Remove this use of ""issuePniCredential""; it is deprecated.",MINOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/entities/PniCredentialResponseAdapter.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java,727,Replace this instanceof check and cast with 'instanceof RateLimitChallengeListener ratelimitchallengelistener',MINOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/push/ClientPresenceManager.java,299,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/RemoteConfigs.java,56,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/RemoteConfigs.java,105,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,319,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,414,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,469,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/storage/Profiles.java,87,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S3457,service/src/main/java/org/whispersystems/textsecuregcm/workers/ReserveUsernameCommand.java,62,%n should be used in place of \n to produce the platform-specific line separator.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/ReserveUsernameCommand.java,62,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S6355,service/src/main/java/org/whispersystems/textsecuregcm/entities/Badge.java,78,Add 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.,MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/entities/Badge.java,80,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S1130,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,780,"Remove the declaration of thrown exception 'org.whispersystems.textsecuregcm.controllers.RateLimitExceededException', as it cannot be thrown from method's body.",MINOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeysController.java,165,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S3655,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeysController.java,186,"Call ""auth.isPresent()"" or ""!auth.isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,81,"Define a constant instead of duplicating this literal "":uuid"" 4 times.",CRITICAL,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/push/PushLatencyManager.java,171,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/push/PushLatencyManager.java,145,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,126,"Constructor has 15 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S2259,service/src/main/java/org/whispersystems/textsecuregcm/storage/PhoneNumberIdentifiers.java,65,"A ""NullPointerException"" could be thrown; ""response"" is nullable here.",MAJOR,BUG
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/PhoneNumberIdentifiers.java,72,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S2259,service/src/main/java/org/whispersystems/textsecuregcm/storage/PhoneNumberIdentifiers.java,117,"A ""NullPointerException"" could be thrown; ""response"" is nullable here.",MAJOR,BUG
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/storage/PushFeedbackProcessor.java,59,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S3740,service/src/main/java/org/whispersystems/textsecuregcm/mappers/CompletionExceptionMapper.java,29,Provide the parametrized type for this generic.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/signal/i18n/HeaderControlledResourceBundleLookup.java,35,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,719,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,742,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/badges/ConfiguredProfileBadgeConverter.java,57,"Define a constant instead of duplicating this literal ""_name"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/badges/ConfiguredProfileBadgeConverter.java,58,"Define a constant instead of duplicating this literal ""_description"" 3 times.",CRITICAL,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,671,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,402,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/configuration/DynamoDbTables.java,67,"Constructor has 17 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1068,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DonationController.java,51,"Remove this unused ""logger"" private field.",MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,122,"Constructor has 10 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,270,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,511,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,1164,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/controllers/SubscriptionController.java,1244,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,70,Make subscriptionCreatedAt a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,71,Make subscriptionLevel a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,72,Make subscriptionLevelChangedAt a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,73,Make accessedAt a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,74,Make canceledAt a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1104,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,75,Make currentPeriodEndsAt a static final constant or non-public and provide accessors if needed.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,179,"Define a constant instead of duplicating this literal ""#user"" 3 times.",CRITICAL,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,214,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,216,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,221,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S6213,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,235,Rename this variable to not match a restricted identifier.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/SubscriptionManager.java,352,"Define a constant instead of duplicating this literal ""#accessed_at = :accessed_at, "" 3 times.",CRITICAL,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/storage/NonNormalizedAccountCrawlerListener.java,53,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DonationController.java,80,Refactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S5411,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DonationController.java,107,Use a primitive boolean expression here.,MINOR,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DonationController.java,118,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/sqs/DirectoryQueue.java,59,"Define a constant instead of duplicating this literal ""String"" 3 times.",CRITICAL,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,256,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,646,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,646,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,80,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,82,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,102,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,104,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,127,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,129,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1141,service/src/main/java/org/whispersystems/textsecuregcm/redis/ClusterLuaScript.java,107,Extract this nested try block into a separate method.,MAJOR,CODE_SMELL
+java:S1193,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantPubSubConnection.java,52,"Replace the usage of the ""instanceof"" operator by a catch block.",MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantPubSubConnection.java,52,Replace this instanceof check and cast with 'instanceof RedisException redisexception',MINOR,CODE_SMELL
+java:S1193,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantPubSubConnection.java,68,"Replace the usage of the ""instanceof"" operator by a catch block.",MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantPubSubConnection.java,68,Replace this instanceof check and cast with 'instanceof RedisException redisexception',MINOR,CODE_SMELL
+java:S1193,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,132,"Replace the usage of the ""instanceof"" operator by a catch block.",MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,132,Replace this instanceof check and cast with 'instanceof RedisException redisexception',MINOR,CODE_SMELL
+java:S1193,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,145,"Replace the usage of the ""instanceof"" operator by a catch block.",MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,145,Replace this instanceof check and cast with 'instanceof RedisException redisexception',MINOR,CODE_SMELL
+java:S1155,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,822,Use isEmpty() to check whether the collection is empty or not.,MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/badges/ConfiguredProfileBadgeConverter.java,114,"Method has 10 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/entities/SelfBadge.java,20,"Constructor has 9 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S135,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,615,Reduce the total number of break and continue statements in this loop to use at most one.,MINOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,70,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S108,websocket-resources/src/main/java/org/whispersystems/websocket/WebSocketResourceProviderFactory.java,79,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/auth/AuthEnablementRefreshRequirementProvider.java,92,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/auth/ContainerRequestUtil.java,13,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/auth/ContainerRequestUtil.java,18,Replace this instanceof check and cast with 'instanceof AccountAndAuthenticatedDeviceHolder accountandauthenticateddeviceholder',MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/auth/PhoneNumberChangeRefreshRequirementProvider.java,40,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/auth/WebsocketRefreshApplicationEventListener.java,31,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/badges/ConfiguredProfileBadgeConverter.java,110,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S127,service/src/main/java/org/whispersystems/textsecuregcm/storage/Account.java,347,Refactor the code in order to not assign to this loop counter from within the loop body.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsUtil.java,8,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/configuration/URLDeserializationConverter.java,17,"Remove this use of ""URL""; it is deprecated.",MINOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,67,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,83,"Define a constant instead of duplicating this literal ""discoverable"" 3 times.",CRITICAL,CODE_SMELL
+java:S1141,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,215,Extract this nested try block into a separate method.,MAJOR,CODE_SMELL
+java:S3457,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,225,%n should be used in place of \n to produce the platform-specific line separator.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,225,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,230,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetUserDiscoverabilityCommand.java,232,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ProfileController.java,146,"Constructor has 13 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/auth/BaseAccountAuthenticator.java,83,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1141,service/src/main/java/org/whispersystems/textsecuregcm/auth/BasicAuthorizationHeader.java,43,Extract this nested try block into a separate method.,MAJOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/auth/BasicAuthorizationHeader.java,63,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/metrics/SignalDatadogReporterFactory.java,65,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesManager.java,144,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S2259,service/src/main/java/org/whispersystems/textsecuregcm/storage/DirectoryReconciler.java,81,"A ""NullPointerException"" could be thrown; ""addUsersResponse"" is nullable here.",MAJOR,BUG
+java:S2259,service/src/main/java/org/whispersystems/textsecuregcm/storage/DirectoryReconciler.java,82,"A ""NullPointerException"" could be thrown; ""deleteUsersResponse"" is nullable here.",MAJOR,BUG
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,146,"Constructor has 10 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,465,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,466,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/logging/UncaughtExceptionHandler.java,12,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S4738,service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java,666,"Use ""java.util.Map.of()"" or ""java.util.Map.ofEntries()"" instead.",MAJOR,CODE_SMELL
+java:S4738,service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java,669,"Use ""java.util.Set.of()"" instead.",MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/controllers/AccountController.java,618,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1123,service/src/main/java/org/whispersystems/textsecuregcm/controllers/CertificateController.java,90,Add the missing @deprecated Javadoc tag.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DeviceController.java,218,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S4274,service/src/main/java/org/whispersystems/textsecuregcm/controllers/DeviceController.java,226,Replace this assert with a proper check.,MAJOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeepAliveController.java,44,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1155,service/src/main/java/org/whispersystems/textsecuregcm/websocket/WebSocketAccountAuthenticator.java,33,Use isEmpty() to check whether the collection is empty or not.,MINOR,CODE_SMELL
+java:S117,service/src/main/java/org/whispersystems/textsecuregcm/controllers/MessageController.java,480,Rename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.,MINOR,CODE_SMELL
+java:S5411,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,518,Use a primitive boolean expression here.,MINOR,CODE_SMELL
+java:S5411,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountsManager.java,542,Use a primitive boolean expression here.,MINOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/storage/DirectoryReconciler.java,40,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/storage/DirectoryReconciler.java,62,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/sqs/DirectoryQueue.java,84,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/util/logging/LoggingUnhandledExceptionMapper.java,37,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/util/logging/LoggingUnhandledExceptionMapper.java,47,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/logging/UriInfoUtil.java,10,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/util/CircuitBreakerUtil.java,23,"Define a constant instead of duplicating this literal ""retry"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/util/CircuitBreakerUtil.java,29,"Define a constant instead of duplicating this literal ""success"" 4 times.",CRITICAL,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/configuration/CircuitBreakerConfiguration.java,77,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/configuration/CircuitBreakerConfiguration.java,80,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S2583,service/src/main/java/org/whispersystems/textsecuregcm/storage/Account.java,511,"Change this condition so that it does not always evaluate to ""false""",MAJOR,BUG
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,170,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,172,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,185,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsManager.java,189,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/VerificationCodeStore.java,49,"Define a constant instead of duplicating this literal ""table"" 3 times.",CRITICAL,CODE_SMELL
+java:S1602,service/src/main/java/org/whispersystems/textsecuregcm/storage/VerificationCodeStore.java,107,Remove useless curly braces around statement,MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccounts.java,125,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsDirectoryReconciler.java,63,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsDirectoryReconciler.java,65,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsTableCrawler.java,49,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/storage/DeletedAccountsTableCrawler.java,57,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S5993,service/src/main/java/org/whispersystems/textsecuregcm/storage/ManagedPeriodicWork.java,42,"Change the visibility of this constructor to ""protected"".",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/ManagedPeriodicWork.java,50,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1124,service/src/main/java/org/whispersystems/textsecuregcm/storage/ManagedPeriodicWork.java,50,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/HostnameUtil.java,14,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,839,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,63,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,78,"Define a constant instead of duplicating this literal ""#uuid = :uuid AND begins_with (#sort, :sortprefix)"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,79,"Define a constant instead of duplicating this literal ""#sort"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,79,"Define a constant instead of duplicating this literal ""#uuid"" 4 times.",CRITICAL,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,181,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,102,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,119,"Define a constant instead of duplicating this literal ""#part"" 4 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,122,"Define a constant instead of duplicating this literal "":part"" 4 times.",CRITICAL,CODE_SMELL
+java:S6244,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,260,Consider using the Consumer Builder method instead of creating this nested builder.,MINOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/AttributeValues.java,16,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/DynamoDbFromConfig.java,10,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/WhisperServerService.java,278,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/workers/ServerVersionCommand.java,21,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/ServerVersionCommand.java,26,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/controllers/ChallengeController.java,63,Replace this instanceof check and cast with 'instanceof AnswerRecaptchaChallengeRequest recaptchaChallengeRequest',MINOR,CODE_SMELL
+java:S1610,service/src/main/java/org/whispersystems/textsecuregcm/entities/AnswerChallengeRequest.java,16,"Convert the abstract class ""AnswerChallengeRequest"" into an interface.",MINOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/controllers/KeysController.java,174,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/auth/CombinedUnidentifiedSenderAccessKeys.java,14,"Rename field ""combinedUnidentifiedSenderAccessKeys""",MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,63,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,64,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,107,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,108,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/ZkParamsCommand.java,33,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/ZkParamsCommand.java,34,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,212,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S1141,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,172,Extract this nested try block into a separate method.,MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/storage/Accounts.java,865,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,222,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/securebackup/SecureBackupClient.java,37,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S1199,service/src/main/java/org/whispersystems/textsecuregcm/experiment/ExperimentEnrollmentManager.java,55,Extract this nested code block into a method.,MINOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/CertificateUtil.java,17,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1905,service/src/main/java/org/whispersystems/textsecuregcm/limits/LeakyBucket.java,60,"Remove this unnecessary cast to ""double"".",MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/entities/CreateProfileRequest.java,61,"Constructor has 9 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1181,service/src/main/java/org/whispersystems/textsecuregcm/currency/CurrencyConversionManager.java,73,Catch Exception instead of Throwable.,MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/currency/CurrencyConversionManager.java,83,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/currency/FixerClient.java,42,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S2589,service/src/main/java/org/whispersystems/textsecuregcm/auth/OptionalAccess.java,60,"Remove this expression which always evaluates to ""true""",MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/filters/RemoteDeprecationFilter.java,54,Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/filters/RemoteDeprecationFilter.java,71,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/filters/RemoteDeprecationFilter.java,78,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/filters/RemoteDeprecationFilter.java,85,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/filters/RemoteDeprecationFilter.java,91,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/Keys.java,82,"Define a constant instead of duplicating this literal "":sortprefix"" 3 times.",CRITICAL,CODE_SMELL
+java:S1611,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesDynamoDb.java,82,"Remove the parentheses around the ""messageBatch"" parameter",MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetRequestLoggingEnabledTask.java,23,"Define a constant instead of duplicating this literal ""enabled"" 3 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/workers/SetCrawlerAccelerationTask.java,27,"Define a constant instead of duplicating this literal ""accelerated"" 3 times.",CRITICAL,CODE_SMELL
+java:S125,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,79,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S3776,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,124,Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.,CRITICAL,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,132,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,140,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/securestorage/SecureStorageClient.java,37,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,90,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,99,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S3655,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,100,"Call ""Optional#isPresent()"" or ""!Optional#isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,116,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/metrics/UserAgentTagUtil.java,30,"Define a constant instead of duplicating this literal ""unrecognized"" 3 times.",CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/ThreadDumpUtil.java,12,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/redis/ConnectionEventLogger.java,14,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/logging/RequestLogManager.java,11,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S2119,service/src/main/java/org/whispersystems/textsecuregcm/push/ClientPresenceManager.java,135,"Save and re-use this ""Random"".",CRITICAL,BUG
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/metrics/OperatingSystemMemoryGauge.java,23,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S6353,service/src/main/java/org/whispersystems/textsecuregcm/metrics/OperatingSystemMemoryGauge.java,24,Use concise character class syntax '\\d' instead of '[0-9]'.,MINOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagePersister.java,113,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/ua/UserAgentUtil.java,17,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/experiment/Experiment.java,118,Replace this instanceof check and cast with 'instanceof Optional optional',MINOR,CODE_SMELL
+java:S117,service/src/main/java/org/whispersystems/textsecuregcm/experiment/Experiment.java,121,Rename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.,MINOR,CODE_SMELL
+java:S1874,service/src/main/java/org/whispersystems/textsecuregcm/redis/FaultTolerantRedisCluster.java,68,"Remove this use of ""setDefaultTimeout""; it is deprecated.",MINOR,CODE_SMELL
+java:S1612,service/src/main/java/org/whispersystems/textsecuregcm/push/ClientPresenceManager.java,116,Replace this lambda with method reference 'ClusterTopologyChangedEvent.class::isInstance'.,MINOR,CODE_SMELL
+java:S1612,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesCache.java,131,Replace this lambda with method reference 'ClusterTopologyChangedEvent.class::isInstance'.,MINOR,CODE_SMELL
+java:S6204,service/src/main/java/org/whispersystems/textsecuregcm/controllers/RemoteConfigController.java,79,Replace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()',MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/redis/ClusterLuaScript.java,112,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S5803,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagePersister.java,172,"Remove this usage of ""getMessagesToPersist"", it is annotated with @VisibleForTesting and should not be accessed from production code.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/storage/MessagesCache.java,194,"Define a constant instead of duplicating this literal ""Failed to parse envelope"" 3 times.",CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/RedisClusterUtil.java,10,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsApplicationEventListener.java,25,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1066,service/src/main/java/org/whispersystems/textsecuregcm/metrics/MetricsRequestEventListener.java,72,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/gcp/CanonicalRequest.java,13,"Rename field ""canonicalRequest""",MAJOR,CODE_SMELL
+java:S3655,websocket-resources/src/main/java/org/whispersystems/websocket/WebSocketResourceProvider.java,147,"Call ""Optional#isPresent()"" or ""!Optional#isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S3252,websocket-resources/src/main/java/org/whispersystems/websocket/auth/WebsocketAuthValueFactoryProvider.java,31,"Use static access with ""org.glassfish.jersey.model.Parameter"" for ""Source"".",CRITICAL,CODE_SMELL
+java:S1186,websocket-resources/src/main/java/org/whispersystems/websocket/logging/WebsocketEvent.java,40,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1186,websocket-resources/src/main/java/org/whispersystems/websocket/logging/WebsocketRequestLog.java,21,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S3599,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/WebsocketEventLayout.java,24,Use another way to initialize this instance.,MINOR,BUG
+java:S1171,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/WebsocketEventLayout.java,24,Move the contents of this initializer to a standard constructor or to field initializers.,MAJOR,CODE_SMELL
+java:S125,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/DateConverter.java,32,This block of commented-out lines of code should be removed.,MAJOR,CODE_SMELL
+java:S3740,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/DateConverter.java,39,Provide the parametrized type for this generic.,MAJOR,CODE_SMELL
+java:S1186,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/LineSeparatorConverter.java,12,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1124,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/WebSocketEventConverter.java,17,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S1124,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/WebSocketEventConverter.java,18,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S2387,websocket-resources/src/main/java/org/whispersystems/websocket/logging/layout/converters/WebSocketEventConverter.java,20,"""cab"" is the name of a field in ""DynamicConverter"".",BLOCKER,CODE_SMELL
+java:S6201,websocket-resources/src/main/java/org/whispersystems/websocket/session/ContextPrincipal.java,19,Replace this instanceof check and cast with 'instanceof ContextPrincipal contextprincipal',MINOR,CODE_SMELL
+java:S3252,websocket-resources/src/main/java/org/whispersystems/websocket/session/WebSocketSessionContextValueFactoryProvider.java,25,"Use static access with ""org.glassfish.jersey.model.Parameter"" for ""Source"".",CRITICAL,CODE_SMELL
+java:S1186,websocket-resources/src/main/java/org/whispersystems/websocket/session/WebSocketSessionContextValueFactoryProvider.java,42,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/entities/ProfileKeyCommitmentAdapter.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/entities/ProfileKeyCredentialResponseAdapter.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/workers/ZkParamsCommand.java,24,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountCleaner.java,40,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1124,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountDatabaseCrawlerListener.java,23,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S1124,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountDatabaseCrawlerListener.java,25,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S1124,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountDatabaseCrawlerListener.java,27,Reorder the modifiers to comply with the Java Language Specification.,MINOR,CODE_SMELL
+java:S5993,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountDatabaseCrawlerListener.java,29,"Change the visibility of this constructor to ""protected"".",MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/storage/PushFeedbackProcessor.java,36,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1126,service/src/main/java/org/whispersystems/textsecuregcm/entities/DirectoryReconciliationRequest.java,59,Replace this if-then-else statement by a single return statement.,MINOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/entities/StickerPackFormUploadAttributes.java,70,"Constructor has 8 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S3457,service/src/main/java/org/whispersystems/textsecuregcm/s3/PostPolicyGenerator.java,35,Format specifiers should be used instead of string concatenation.,MAJOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/entities/RegistrationLock.java,18,"Rename field ""registrationLock""",MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/storage/PushFeedbackProcessor.java,33,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/storage/AccountCleaner.java,36,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1186,websocket-resources/src/main/java/org/whispersystems/websocket/WebSocketClient.java,67,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S2676,websocket-resources/src/main/java/org/whispersystems/websocket/WebSocketClient.java,108,Use the original value instead.,MINOR,BUG
+java:S1066,websocket-resources/src/main/java/org/whispersystems/websocket/messages/protobuf/ProtobufWebSocketMessage.java,27,Merge this if statement with the enclosing one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/http/FormDataBodyPublisher.java,13,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/ExecutorUtils.java,13,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S107,service/src/main/java/org/whispersystems/textsecuregcm/entities/AttachmentDescriptorV2.java,41,"Constructor has 8 parameters, which is greater than 7 authorized.",MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/CircuitBreakerUtil.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/entities/DeviceName.java,17,"Rename field ""deviceName""",MAJOR,CODE_SMELL
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/entities/DeviceName.java,19,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/auth/OptionalAccess.java,19,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S3655,service/src/main/java/org/whispersystems/textsecuregcm/auth/OptionalAccess.java,72,"Call ""Optional#isPresent()"" or ""!Optional#isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/auth/UnidentifiedAccessChecksum.java,16,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/storage/DirectoryReconciler.java,110,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,50,"Define a constant instead of duplicating this literal ""keyId"" 3 times.",CRITICAL,CODE_SMELL
+java:S5411,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,57,Use a primitive boolean expression here.,MINOR,CODE_SMELL
+java:S1130,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,67,"Remove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.",MINOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,69,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S106,service/src/main/java/org/whispersystems/textsecuregcm/workers/CertificateCommand.java,74,Replace this use of System.out or System.err by a logger.,MAJOR,CODE_SMELL
+java:S2273,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,169,"Move this call to ""wait()"" into a synchronized block to be sure the monitor on ""Object"" is held.",MAJOR,BUG
+java:S2274,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,169,"Remove this call to ""wait"" or move it into a ""while"" loop.",CRITICAL,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,170,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S1186,service/src/main/java/org/whispersystems/textsecuregcm/push/APNSender.java,162,"Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.",CRITICAL,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/redis/RedisOperation.java,12,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1155,service/src/main/java/org/whispersystems/textsecuregcm/redis/ReplicatedJedisPool.java,40,Use isEmpty() to check whether the collection is empty or not.,MINOR,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,30,"Define a constant instead of duplicating this literal ""HmacSHA256"" 6 times.",CRITICAL,CODE_SMELL
+java:S1192,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,32,"Define a constant instead of duplicating this literal ""UTF-8"" 6 times.",CRITICAL,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,32,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,33,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,36,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,39,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,42,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4719,service/src/main/java/org/whispersystems/textsecuregcm/s3/PolicySigner.java,46,Replace charset name argument with StandardCharsets.UTF_8,MINOR,CODE_SMELL
+java:S4201,service/src/main/java/org/whispersystems/textsecuregcm/entities/PreKey.java,48,"Remove this unnecessary null check; ""instanceof"" returns false for nulls.",MINOR,CODE_SMELL
+java:S3457,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,217,Format specifiers should be used instead of string concatenation.,MAJOR,CODE_SMELL
+java:S2139,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,222,"Either log this exception and handle it, or rethrow it with some contextual information.",MAJOR,CODE_SMELL
+java:S112,service/src/main/java/org/whispersystems/textsecuregcm/workers/DeleteUserCommand.java,224,Define and throw a dedicated exception instead of using a generic one.,MAJOR,CODE_SMELL
+java:S2184,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkReceivedGauge.java,35,"Cast one of the operands of this subtraction operation to a ""double"".",MINOR,BUG
+java:S2184,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkReceivedGauge.java,36,"Cast one of the operands of this division operation to a ""double"".",MINOR,BUG
+java:S2184,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkSentGauge.java,35,"Cast one of the operands of this subtraction operation to a ""double"".",MINOR,BUG
+java:S2184,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkSentGauge.java,36,"Cast one of the operands of this division operation to a ""double"".",MINOR,BUG
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/metrics/FileDescriptorGauge.java,16,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S3457,redis-dispatch/src/main/java/org/whispersystems/dispatch/DispatchManager.java,116,Format specifiers should be used instead of string concatenation.,MAJOR,CODE_SMELL
+java:S1155,service/src/main/java/org/whispersystems/textsecuregcm/websocket/WebSocketAccountAuthenticator.java,32,Use isEmpty() to check whether the collection is empty or not.,MINOR,CODE_SMELL
+java:S2274,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,161,"Remove this call to ""wait"" or move it into a ""while"" loop.",CRITICAL,CODE_SMELL
+java:S2273,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,161,"Move this call to ""wait()"" into a synchronized block to be sure the monitor on ""Object"" is held.",MAJOR,BUG
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,162,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S3655,redis-dispatch/src/main/java/org/whispersystems/dispatch/DispatchManager.java,124,"Call ""Optional#isPresent()"" or ""!Optional#isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S3655,redis-dispatch/src/main/java/org/whispersystems/dispatch/DispatchManager.java,126,"Call ""Optional#isPresent()"" or ""!Optional#isEmpty()"" before accessing the value.",MAJOR,BUG
+java:S3457,redis-dispatch/src/main/java/org/whispersystems/dispatch/DispatchManager.java,128,Format specifiers should be used instead of string concatenation.,MAJOR,CODE_SMELL
+java:S1192,redis-dispatch/src/main/java/org/whispersystems/dispatch/redis/PubSubConnection.java,48,"Define a constant instead of duplicating this literal ""Connection closed!"" 3 times.",CRITICAL,CODE_SMELL
+java:S1118,redis-dispatch/src/main/java/org/whispersystems/dispatch/util/Util.java,10,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S2142,redis-dispatch/src/main/java/org/whispersystems/dispatch/util/Util.java,36,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/storage/PubSubManager.java,113,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S5803,service/src/main/java/org/whispersystems/textsecuregcm/entities/PreKeyResponse.java,37,"Remove this usage of ""getDeviceId"", it is annotated with @VisibleForTesting and should not be accessed from production code.",CRITICAL,CODE_SMELL
+java:S1604,service/src/main/java/org/whispersystems/textsecuregcm/websocket/ProvisioningConnectListener.java,27,Make this anonymous inner class a lambda,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/SystemMapper.java,15,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S2142,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,156,"Either re-interrupt this method or rethrow the ""InterruptedException"" that can be caught here.",MAJOR,BUG
+java:S108,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,156,Either remove or fill this block of code.,MAJOR,CODE_SMELL
+java:S4201,service/src/main/java/org/whispersystems/textsecuregcm/entities/SignedPreKey.java,30,"Remove this unnecessary null check; ""instanceof"" returns false for nulls.",MINOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/Constants.java,10,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1075,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,20,Refactor your code to get this URI from a customizable parameter.,MINOR,CODE_SMELL
+java:S2095,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,21,"Use try-with-resources or close this ""BufferedReader"" in a ""finally"" clause.",BLOCKER,BUG
+java:S1854,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,22,"Remove this useless assignment to local variable ""header"".",MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,22,"Remove this unused ""header"" local variable.",MINOR,CODE_SMELL
+java:S1854,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,23,"Remove this useless assignment to local variable ""header2"".",MAJOR,CODE_SMELL
+java:S1481,service/src/main/java/org/whispersystems/textsecuregcm/metrics/NetworkGauge.java,23,"Remove this unused ""header2"" local variable.",MINOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/entities/StaleDevices.java,15,"Rename field ""staleDevices""",MAJOR,CODE_SMELL
+java:S6201,service/src/main/java/org/whispersystems/textsecuregcm/util/VerificationCode.java,58,Replace this instanceof check and cast with 'instanceof VerificationCode verificationcode',MINOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/entities/ApnRegistrationId.java,15,"Rename field ""apnRegistrationId""",MAJOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/entities/GcmRegistrationId.java,15,"Rename field ""gcmRegistrationId""",MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/ByteArrayAdapter.java,17,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/Conversions.java,7,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1110,service/src/main/java/org/whispersystems/textsecuregcm/util/Conversions.java,154,Remove these useless parentheses.,MAJOR,CODE_SMELL
+java:S1110,service/src/main/java/org/whispersystems/textsecuregcm/util/Conversions.java,166,Remove these useless parentheses.,MAJOR,CODE_SMELL
+java:S1118,service/src/main/java/org/whispersystems/textsecuregcm/util/Util.java,25,Add a private constructor to hide the implicit public one.,MAJOR,CODE_SMELL
+java:S1700,service/src/main/java/org/whispersystems/textsecuregcm/util/VerificationCode.java,14,"Rename field ""verificationCode""",MAJOR,CODE_SMELL
+java:S1643,service/src/main/java/org/whispersystems/textsecuregcm/util/VerificationCode.java,48,Use a StringBuilder instead.,MINOR,CODE_SMELL
+java:S1643,service/src/main/java/org/whispersystems/textsecuregcm/util/VerificationCode.java,51,Use a StringBuilder instead.,MINOR,CODE_SMELL
